@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.maviron.spring.springdemo.dao.AdsBrandDao">
+
+    <resultMap type="com.maviron.spring.springdemo.entity.AdsBrand" id="AdsBrandMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="brandName" column="brand_name" jdbcType="VARCHAR"/>
+        <result property="categoryId" column="category_id" jdbcType="INTEGER"/>
+        <result property="advertiserId" column="advertiser_id" jdbcType="INTEGER"/>
+        <result property="isDeleted" column="is_deleted" jdbcType="INTEGER"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="createUser" column="create_user" jdbcType="VARCHAR"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+        <result property="updateUser" column="update_user" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="AdsBrandMap">
+        select
+          id, brand_name, category_id, advertiser_id, is_deleted, create_time, create_user, update_time, update_user
+        from ad_db.ads_brand
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="AdsBrandMap">
+        select
+          id, brand_name, category_id, advertiser_id, is_deleted, create_time, create_user, update_time, update_user
+        from ad_db.ads_brand
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="AdsBrandMap">
+        select
+        id, brand_name, category_id, advertiser_id, is_deleted, create_time, create_user, update_time, update_user
+        from ad_db.ads_brand
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="brandName != null and brandName != ''">
+                and brand_name = #{brandName}
+            </if>
+            <if test="categoryId != null">
+                and category_id = #{categoryId}
+            </if>
+            <if test="advertiserId != null">
+                and advertiser_id = #{advertiserId}
+            </if>
+            <if test="isDeleted != null">
+                and is_deleted = #{isDeleted}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+            <if test="createUser != null and createUser != ''">
+                and create_user = #{createUser}
+            </if>
+            <if test="updateTime != null">
+                and update_time = #{updateTime}
+            </if>
+            <if test="updateUser != null and updateUser != ''">
+                and update_user = #{updateUser}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into ad_db.ads_brand(brand_name, category_id, advertiser_id, is_deleted, create_time, create_user, update_time, update_user)
+        values (#{brandName}, #{categoryId}, #{advertiserId}, #{isDeleted}, #{createTime}, #{createUser}, #{updateTime}, #{updateUser})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into ad_db.ads_brand(brand_name, category_id, advertiser_id, is_deleted, create_time, create_user,
+        update_time, update_user)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.brandName}, #{entity.categoryId}, #{entity.advertiserId}, #{entity.isDeleted},
+            #{entity.createTime}, #{entity.createUser}, #{entity.updateTime}, #{entity.updateUser})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into ad_db.ads_brand(brand_name, category_id, advertiser_id, is_deleted, create_time, create_user,
+        update_time, update_user)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.brandName}, #{entity.categoryId}, #{entity.advertiserId}, #{entity.isDeleted},
+            #{entity.createTime}, #{entity.createUser}, #{entity.updateTime}, #{entity.updateUser})
+        </foreach>
+        on duplicate key update
+        brand_name = values(brand_name) , category_id = values(category_id) , advertiser_id = values(advertiser_id) ,
+        is_deleted = values(is_deleted) , create_time = values(create_time) , create_user = values(create_user) ,
+        update_time = values(update_time) , update_user = values(update_user)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update ad_db.ads_brand
+        <set>
+            <if test="brandName != null and brandName != ''">
+                brand_name = #{brandName},
+            </if>
+            <if test="categoryId != null">
+                category_id = #{categoryId},
+            </if>
+            <if test="advertiserId != null">
+                advertiser_id = #{advertiserId},
+            </if>
+            <if test="isDeleted != null">
+                is_deleted = #{isDeleted},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime},
+            </if>
+            <if test="createUser != null and createUser != ''">
+                create_user = #{createUser},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime},
+            </if>
+            <if test="updateUser != null and updateUser != ''">
+                update_user = #{updateUser},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from ad_db.ads_brand where id = #{id}
+    </delete>
+
+</mapper>
+

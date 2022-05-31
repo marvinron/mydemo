@@ -1,0 +1,44 @@
+解决循环依赖的两个前提：
+1、依赖的bean必须都是单例
+2、依赖的方式必须不都是构造器注入
+spring创建bean分三步：
+1、实例化 就是createBeanInstance
+2、属性注入 populateBean 就是set一些属性的值
+3、初始化 initializeBean 执行aware、initMethod和AOP的方法
+依赖注入：
+一级缓存：singtonObjects 主要存储已创建完成单例的bean
+二级缓存：earlySingleton  存储仅完成实例化，还未进行初始化和属性注入的bean
+三级缓存: singletonFactories 通过beanName查找对应的实例工厂，如果存在，则通过工厂创建bean，并且放置在earlySingleton
+
+
+为什么需要三级缓存？
+如果单纯为了打破循环依赖，二级缓存就够了
+
+
+
+
+Function类型的函数接口
+Supplier 不接受参数 返回数据
+Consumer 是接受参数，不返回数据
+Runnable 是无参无返回类型的函数
+Function 接收一个参数返回一个值
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
