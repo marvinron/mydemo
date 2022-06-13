@@ -15,7 +15,6 @@ public class MyEvent extends ApplicationEvent {
     public MyEvent(Object source) {
         super(source);
     }
-
     public String getArgs() {
         return args;
     }
