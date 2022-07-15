@@ -1,5 +1,9 @@
 package com.maviron.spring.springdemo.entity;
 
+import cn.hutool.extra.mail.MailAccount;
+import cn.hutool.extra.mail.MailUtil;
+import com.alibaba.fastjson.JSONObject;
+
 import javax.validation.constraints.*;
 import java.io.Serializable;
 
@@ -26,13 +30,13 @@ public class User implements Serializable {
     @Email(message = "邮箱格式不正确")
     private String email;
 
-    private int sequence;
+    private Long sequence;
 
-    public int getSequence() {
+    public Long getSequence() {
         return sequence;
     }
 
-    public void setSequence(int sequence) {
+    public void setSequence(Long sequence) {
         this.sequence = sequence;
     }
 
@@ -77,5 +81,27 @@ public class User implements Serializable {
                 ", email='" + email + '\'' +
                 ", sequence=" + sequence +
                 '}';
+    }
+
+    public static void main(String[] args) {
+       String json = "{\n" +
+               "  \"id\": \"\",\n" +
+               "  \"name\": \"\",\n" +
+               "  \"age\": 0,\n" +
+               "  \"email\": \"\",\n" +
+               "  \"sequence\": \"80\",\n" +
+               "}";
+        User user = JSONObject.parseObject(json, User.class);
+        System.out.println(user);
+        MailAccount account = new MailAccount();
+        account.setHost("smtp.163.com");
+        account.setPort(25);
+        //account.setAuth(true);
+        account.setFrom("houlei801@163.com");
+        account.setUser("houlei801@163.com");
+        account.setPass("PFUOFODCGSVXRMQL");
+        //account.setSslEnable(true);
+
+        MailUtil.send(account,"houlei801@163.com", "大数据发送的信息","value", false);
     }
 }

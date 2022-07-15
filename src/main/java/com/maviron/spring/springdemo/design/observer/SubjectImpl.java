@@ -1,7 +1,5 @@
 package com.maviron.spring.springdemo.design.observer;
 
-import cn.hutool.core.util.NumberUtil;
-
 import java.util.ArrayList;
 import java.util.List;
 

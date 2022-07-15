@@ -1,5 +1,6 @@
 package com.maviron.spring.springdemo.event;
 
+import com.maviron.spring.springdemo.entity.User;
 import org.springframework.context.ApplicationEvent;
 
 /**
@@ -22,4 +23,6 @@ public class MyEvent extends ApplicationEvent {
     public void setArgs(String args) {
         this.args = args;
     }
+
+
 }

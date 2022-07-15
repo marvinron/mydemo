@@ -1,8 +1,6 @@
 package com.maviron.spring.springdemo.design.observer;
 
 import cn.hutool.core.util.RandomUtil;
-import com.maviron.spring.springdemo.demo.web.WebUtil;
-import org.springframework.web.util.WebUtils;
 
 import java.util.ArrayList;
 import java.util.List;

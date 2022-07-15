@@ -1,6 +1,6 @@
 package com.maviron.spring.springdemo.until;
 
-import com.cube.share.base.templates.CustomException;
+
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -22,9 +22,7 @@ public final class IAssert {
     private static final String BLANK_SPACE = " ";
 
     public static void notNull(Object obj, String errorMsg) {
-        if (Objects.isNull(obj)) {
-            throw new CustomException(errorMsg);
-        }
+
     }
 
     public static <T extends Throwable> void notNull(Object obj, Supplier<T> supplier) throws T {
@@ -35,7 +33,7 @@ public final class IAssert {
 
     public static void notNullStr(String str, String errorMsg) {
         if (StringUtils.isBlank(str)) {
-            throw new CustomException(errorMsg);
+
         }
     }
 
@@ -47,25 +45,25 @@ public final class IAssert {
 
     public static void notEmptyCollection(Collection<?> collection, String msg) {
         if (CollectionUtils.isEmpty(collection)) {
-            throw new CustomException(msg);
+
         }
     }
 
     public static void afterNow(@NonNull LocalDateTime dateTime, String msg) {
         if (dateTime.isBefore(LocalDateTime.now())) {
-            throw new CustomException(msg);
+
         }
     }
 
     public static <N extends Comparable<? super N>> void notLarge(N n1, N n2, String msg) {
         if (ObjectUtils.compare(n1, n2) > 0) {
-            throw new CustomException(msg);
+
         }
     }
 
     public static void state(boolean condition, String msg) {
         if (!condition) {
-            throw new CustomException(msg);
+
         }
     }
 
@@ -76,7 +74,7 @@ public final class IAssert {
     }
 
     public static void justThrow(String msg) {
-        throw new CustomException(msg);
+
     }
 
 }
