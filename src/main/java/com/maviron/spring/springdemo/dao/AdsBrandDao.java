@@ -1,5 +1,7 @@
 package com.maviron.spring.springdemo.dao;
 import com.maviron.spring.springdemo.entity.AdsBrand;
+import com.maviron.spring.springdemo.sublisttable.DateTableShardStrategy;
+import com.maviron.spring.springdemo.sublisttable.TableShard;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -11,6 +13,7 @@ import java.util.List;
  * @author makejava
  * @since 2022-04-07 10:37:49
  */
+@TableShard(tableName = {"ads_brand","user"}, shardStrategy = DateTableShardStrategy.class)
 @Mapper
 public interface AdsBrandDao {
 

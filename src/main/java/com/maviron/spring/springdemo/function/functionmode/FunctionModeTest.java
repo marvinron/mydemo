@@ -44,6 +44,7 @@ public class FunctionModeTest {
         System.out.println(v);
 
 
+
     }
 
     //命令模式 start
@@ -94,6 +95,10 @@ public class FunctionModeTest {
                 Optional.empty();
     }
     //职责链模式 end
+
+    //访问者模式的方法 start
+
+    //访问者模式的方法 end
 
 
 }

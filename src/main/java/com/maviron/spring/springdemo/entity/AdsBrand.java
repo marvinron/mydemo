@@ -45,7 +45,18 @@ public class AdsBrand implements Serializable {
      * 更新人
      */
     private String updateUser;
+    /**
+     * 名称
+     */
+    private String name;
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public Integer getId() {
         return id;

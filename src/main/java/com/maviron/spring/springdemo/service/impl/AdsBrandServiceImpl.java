@@ -31,15 +31,21 @@ public class AdsBrandServiceImpl implements AdsBrandService {
     @Override
     @Transactional
     public AdsBrand queryById(Integer id) {
-        lock.lock();
+        //lock.lock();
         System.out.printf("线程%s进入方法%s\n",Thread.currentThread().getName(),"starting");
-        AdsBrand adsBrand = this.adsBrandDao.queryById(id);
-        if(adsBrand != null){
-            adsBrand.setAdvertiserId(7666);
-            int update = adsBrandDao.update(adsBrand);
-        }
-        lock.unlock();
-        return adsBrand;
+        AdsBrand adsBrand = new AdsBrand();
+        adsBrand.setId(2);
+        adsBrand.setBrandName("华为");
+        adsBrand.setCategoryId(1);
+        adsBrand.setAdvertiserId(100);
+        //adsBrand = this.adsBrandDao.queryById(id);
+        List<AdsBrand> adsBrands = this.adsBrandDao.queryAll(adsBrand);
+        //if(adsBrand != null){
+        //    adsBrand.setAdvertiserId(7666);
+        //    int update = adsBrandDao.update(adsBrand);
+        //}
+        //lock.unlock();
+        return adsBrands.get(0);
     }
 
     /**

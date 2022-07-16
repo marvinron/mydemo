@@ -12,6 +12,7 @@
         <result property="createUser" column="create_user" jdbcType="VARCHAR"/>
         <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
         <result property="updateUser" column="update_user" jdbcType="VARCHAR"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
     </resultMap>
 
     <!--查询单个-->
@@ -33,11 +34,11 @@
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="AdsBrandMap">
         select
-        id, brand_name, category_id, advertiser_id, is_deleted, create_time, create_user, update_time, update_user
-        from ad_db.ads_brand
+        adb.id, brand_name, category_id, advertiser_id, is_deleted, create_time, create_user, update_time, update_user,adu.name
+        from ad_db.ads_brand adb left join ad_db.user adu on adb.id = adu.id
         <where>
             <if test="id != null">
-                and id = #{id}
+                and adb.id = #{id}
             </if>
             <if test="brandName != null and brandName != ''">
                 and brand_name = #{brandName}
