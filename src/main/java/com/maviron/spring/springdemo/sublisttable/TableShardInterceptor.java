@@ -1,5 +1,7 @@
 package com.maviron.spring.springdemo.sublisttable;
 
+import cn.hutool.core.date.DateTime;
+import cn.hutool.core.date.DateUtil;
 import org.apache.ibatis.executor.statement.StatementHandler;
 import org.apache.ibatis.mapping.MappedStatement;
 import org.apache.ibatis.plugin.*;
@@ -73,6 +75,15 @@ public class TableShardInterceptor implements Interceptor {
  
     @Override
     public void setProperties(Properties properties) {
+    }
+
+    public static void main(String[] args) {
+        DateTime parse = DateUtil.parse("2085-12-31");
+        long nowTime = System.currentTimeMillis();
+        long expireTime = (parse.getTime() - nowTime) / 1000;
+        String s = String.valueOf(expireTime);
+        int time = Integer.parseInt(String.valueOf(expireTime)) + (60 * 60 * 24 * 30);
+        System.out.println(time);
     }
  
 }
