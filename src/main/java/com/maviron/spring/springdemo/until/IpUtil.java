@@ -1,5 +1,8 @@
 package com.maviron.spring.springdemo.until;
 
+import com.alibaba.ttl.TransmittableThreadLocal;
+import org.apache.tika.Tika;
+
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -12,6 +15,7 @@ public class IpUtil {
     private static final String IP_ADDRESS_LOCALHOST = "127.0.0.1";
 
     private static final String UNKNOWN = "unknown";
+    private static final ThreadLocal<Tika> TIKA = TransmittableThreadLocal.withInitial(Tika::new);
 
 
     /**
@@ -75,6 +79,14 @@ public class IpUtil {
                 ((number >>> 16) & 0xFF) + "." +
                 (number >>> 8 & 0xFF) + "." +
                 (number & 0xFF);
+    }
+    public static String getMineType(String name) {
+        return TIKA.get().detect(name);
+    }
+
+    public static void main(String[] args) {
+        String mineType = getMineType("123.xls");
+        System.out.println(mineType);
     }
 
 }
