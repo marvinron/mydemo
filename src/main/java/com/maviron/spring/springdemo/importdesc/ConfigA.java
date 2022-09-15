@@ -13,11 +13,11 @@ import org.springframework.context.annotation.Import;
  * @createTime 2022年08月11日 10:10:00
  */
 //@Import(ConfigB.class)
-@Import(ServiceImportSelector.class)
-@Configuration
+//@Import(ServiceImportSelector.class)
+//@Configuration
 public class ConfigA {
-    @Bean
-    @ConditionalOnMissingBean
+    //@Bean
+    //@ConditionalOnMissingBean
     public ServiceInterface serviceA(){
         return new ServiceA();
     }

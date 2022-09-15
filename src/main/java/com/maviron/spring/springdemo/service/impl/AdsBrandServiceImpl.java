@@ -20,7 +20,8 @@ import java.util.concurrent.locks.ReentrantLock;
 public class AdsBrandServiceImpl implements AdsBrandService {
     @Resource
     private AdsBrandDao adsBrandDao;
-    private Lock lock = new ReentrantLock(true);
+    private Object lock =new Object();
+    //private Lock lock =new ReentrantLock(true);
 
     /**
      * 通过ID查询单条数据
@@ -34,12 +35,13 @@ public class AdsBrandServiceImpl implements AdsBrandService {
         //lock.lock();
         System.out.printf("线程%s进入方法%s\n",Thread.currentThread().getName(),"starting");
         AdsBrand adsBrand = new AdsBrand();
-        adsBrand.setId(2);
-        adsBrand.setBrandName("华为");
-        adsBrand.setCategoryId(1);
-        adsBrand.setAdvertiserId(100);
+        adsBrand.setId(1);
+        //adsBrand.setBrandName("华为");
+        //adsBrand.setCategoryId(1);
+        //adsBrand.setAdvertiserId(100);
         //adsBrand = this.adsBrandDao.queryById(id);
         List<AdsBrand> adsBrands = this.adsBrandDao.queryAll(adsBrand);
+        //int i = adsBrandDao.deleteById(1);
         //if(adsBrand != null){
         //    adsBrand.setAdvertiserId(7666);
         //    int update = adsBrandDao.update(adsBrand);
@@ -93,5 +95,20 @@ public class AdsBrandServiceImpl implements AdsBrandService {
     @Override
     public boolean deleteById(Integer id) {
         return this.adsBrandDao.deleteById(id) > 0;
+    }
+
+    @Override
+    public AdsBrand test(Integer id) {
+
+        long start = System.currentTimeMillis();
+        //lock.lock();
+        AdsBrand adsBrand = new AdsBrand();
+        synchronized (lock){
+            adsBrand = queryById(id);
+        }
+        //lock.unlock();
+        long end = System.currentTimeMillis();
+        System.out.println((end - start));
+        return adsBrand;
     }
 }

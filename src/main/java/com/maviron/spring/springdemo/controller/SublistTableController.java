@@ -21,7 +21,7 @@ public class SublistTableController {
     private AdsBrandService adsBrandService;
     @RequestMapping("test")
     public Result getAdsBrand(){
-        AdsBrand adsBrand = adsBrandService.queryById(1);
+        AdsBrand adsBrand = adsBrandService.test(1);
         return Result.success(adsBrand);
     }
 }

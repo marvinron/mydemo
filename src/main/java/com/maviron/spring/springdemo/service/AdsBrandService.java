@@ -52,5 +52,6 @@ public interface AdsBrandService {
      * @return 是否成功
      */
     boolean deleteById(Integer id);
+    AdsBrand test(Integer id);
 
 }

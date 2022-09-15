@@ -11,10 +11,10 @@ import org.springframework.context.annotation.Configuration;
  * @Description TODO
  * @createTime 2022年08月11日 10:10:00
  */
-@Configuration
+//@Configuration
 public class ConfigB {
-    @Bean
-    @ConditionalOnMissingBean
+    //@Bean
+    //@ConditionalOnMissingBean
     public ServiceInterface serviceB(){
         return new ServiceB();
     }

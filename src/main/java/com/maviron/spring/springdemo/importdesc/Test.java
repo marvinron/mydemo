@@ -12,8 +12,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
  */
 public class Test {
     public static void main(String[] args) {
-        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(ConfigA.class);
-        ServiceInterface bean = applicationContext.getBean(ServiceInterface.class);
-        bean.test();
+        //ApplicationContext applicationContext = new AnnotationConfigApplicationContext(ConfigA.class);
+        //ServiceInterface bean = applicationContext.getBean(ServiceInterface.class);
+        //bean.test();
     }
 }

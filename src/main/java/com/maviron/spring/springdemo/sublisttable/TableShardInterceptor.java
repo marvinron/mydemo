@@ -14,14 +14,14 @@ import org.springframework.context.annotation.Configuration;
 import java.sql.Connection;
 import java.util.Arrays;
 import java.util.Properties;
-
-@Intercepts({
-        @Signature(
-            type = StatementHandler.class,
-            method = "prepare",
-            args = { Connection.class, Integer.class }
-        )
-})
+//功能可以用  为了测试其他的暂时注掉
+//@Intercepts({
+//        @Signature(
+//            type = StatementHandler.class,
+//            method = "prepare",
+//            args = { Connection.class, Integer.class }
+//        )
+//})
 public class TableShardInterceptor implements Interceptor {
  
     private static final ReflectorFactory defaultReflectorFactory = new DefaultReflectorFactory();
@@ -84,6 +84,9 @@ public class TableShardInterceptor implements Interceptor {
         String s = String.valueOf(expireTime);
         int time = Integer.parseInt(String.valueOf(expireTime)) + (60 * 60 * 24 * 30);
         System.out.println(time);
+        String ua = "Mozilla/5.0 (Linux; Android 10; TAS-AN00 Build/HUAWEITAS-AN00; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/88.0.4324.93 Mobile Safari/537.36";
+        int i = ua.hashCode();
+        System.out.println(i);
     }
  
 }

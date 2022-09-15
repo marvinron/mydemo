@@ -14,6 +14,31 @@ spring创建bean分三步：
 为什么需要三级缓存？
 如果单纯为了打破循环依赖，二级缓存就够了
 
+-- BeanFactory(一级接口)
+    一级接口，定义了获取 Bean、BeanType、单例多例的方法
+
+    -- ListableBeanFactory(二级接口)
+    可列表化的BeanFactory，添加了根据BeanDefinition相关的一些操作，以及列表化返回结果的接口
+
+    -- HierarchicalBeanFactory(二级接口)
+        实现了工厂的分层，引入父子容器的概念
+        1. 父子容器是相互隔离的，他们内部可以存在名称相同的 Bean
+        2. 子容器可以访问父容器的Bean，父容器不能访问子容器的Bean
+        3. 调用子容器的getBean方法，会沿着当前的容器向上层查找，直到找到对应的Bean为止
+        4. 子容器可以通过任何方式注入父容器中的Bean，而父容器无法注入子容器的Bean
+
+        -- ConfigurableBeanFactory(三级接口)
+        对 HierarchicalBeanFactory 增强，同时继承了 SingletonBeanRegistry
+
+    -- AutowireCapableBeanFactory(二级接口)
+        1. 对于想要拥有自动装配能力，并且想要把这种能力暴露给外部应用BeanFactory类需要实现此接口。
+        2. 正常情况下不要使用此接口，应该更倾向于使用BeanFactory或者ListableBeanFactory接口。
+        3. 此接口主要是针对框架之外，没有向Spring托管的Bean的应用。通过暴露此功能，Spring框架之外的程序，具有自动装配Spring的功能
+        4. 需要注意的是ApplicationContext并没有实现此接口。因为应用代码很少使用此功能。如果确实需要的话可以调用ApplicationContext.getAutowireCapableBeanFactory()的方法，来获取此接口的实例
+        5. 如果一个类实现了此接口，那么很大程度上它还需要实现BeanFactoryWare接口。它可以在应用上下文中返回BeanFactory;
+
+            -- ConfigurableListableBeanFactory(四级接口)
+
 
 
 
