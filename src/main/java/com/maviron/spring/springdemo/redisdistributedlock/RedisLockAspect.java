@@ -171,6 +171,7 @@ public class RedisLockAspect {
                 .findFirst().orElse(null);
         if(redisLockDefinitionHolder != null && redisLockDefinitionHolder.getCurrentThread().equals(currentThread)){
             //请求结束后
+            redisTemplate.delete(businessKey);
         }
     }
 }

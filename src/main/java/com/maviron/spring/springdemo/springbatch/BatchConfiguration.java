@@ -30,8 +30,8 @@ import javax.sql.DataSource;
  * @Description 批处理配置
  * @createTime 2022年07月15日 14:15:00
  */
-@Configuration
-@EnableBatchProcessing
+//@Configuration
+//@EnableBatchProcessing
 public class BatchConfiguration {
 
     @Autowired
@@ -48,7 +48,7 @@ public class BatchConfiguration {
     @Autowired
     private Job importUserJob ;
 
-    @Scheduled(fixedRate = 5000000)
+    //@Scheduled(fixedRate = 5000000)
     public void printMessage() {
         try {
             JobParameters jobParameters = new JobParametersBuilder().addLong(
@@ -59,7 +59,7 @@ public class BatchConfiguration {
             e.printStackTrace();
         }
     }
-    @Bean
+    //@Bean
     public JdbcBatchItemWriter<User> writer(){
         JdbcBatchItemWriter<User> writer = new JdbcBatchItemWriter<>();
         writer.setItemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<>());

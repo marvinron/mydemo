@@ -1,4 +1,6 @@
 package com.maviron.spring.springdemo.service.impl;
+import cn.hutool.extra.mail.MailAccount;
+import cn.hutool.extra.mail.MailUtil;
 import com.maviron.spring.springdemo.dao.AdsBrandDao;
 import com.maviron.spring.springdemo.entity.AdsBrand;
 import com.maviron.spring.springdemo.service.AdsBrandService;
@@ -7,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.UUID;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -110,5 +113,19 @@ public class AdsBrandServiceImpl implements AdsBrandService {
         long end = System.currentTimeMillis();
         System.out.println((end - start));
         return adsBrand;
+    }
+
+    public static void main(String[] args) {
+        String replace = UUID.randomUUID().toString().replace("-", "");
+        System.out.println(replace);
+        MailAccount account = new MailAccount();
+        account.setHost("smtp.exmail.qq.com");
+        account.setPort(465);
+        account.setAuth(true);
+        account.setFrom("houlei@gameley.com");
+        account.setUser("houlei@gameley.com");
+        account.setPass("hGkdHUSHE2QjxwHo");
+        account.setSslEnable(true);
+        MailUtil.send(account, "houlei@gameley.com", "订单预警邮件","无效包名占比超过阈值，预警值为", false);
     }
 }
