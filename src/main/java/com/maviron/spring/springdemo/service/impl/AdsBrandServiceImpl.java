@@ -2,7 +2,10 @@ package com.maviron.spring.springdemo.service.impl;
 import cn.hutool.extra.mail.MailAccount;
 import cn.hutool.extra.mail.MailUtil;
 import com.maviron.spring.springdemo.dao.AdsBrandDao;
+import com.maviron.spring.springdemo.entity.AdPlanInfo;
 import com.maviron.spring.springdemo.entity.AdsBrand;
+import com.maviron.spring.springdemo.entity.Employee;
+import com.maviron.spring.springdemo.service.AdsAbBrandService;
 import com.maviron.spring.springdemo.service.AdsBrandService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,7 +23,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * @since 2022-04-07 10:37:51
  */
 @Service("adsBrandService")
-public class AdsBrandServiceImpl implements AdsBrandService {
+public class AdsBrandServiceImpl extends AdsAbBrandService<AdPlanInfo,Employee> implements AdsBrandService {
     @Resource
     private AdsBrandDao adsBrandDao;
     private Object lock =new Object();
@@ -60,44 +63,8 @@ public class AdsBrandServiceImpl implements AdsBrandService {
      * @param limit  查询条数
      * @return 对象列表
      */
-    @Override
     public List<AdsBrand> queryAllByLimit(int offset, int limit) {
         return this.adsBrandDao.queryAllByLimit(offset, limit);
-    }
-
-    /**
-     * 新增数据
-     *
-     * @param adsBrand 实例对象
-     * @return 实例对象
-     */
-    @Override
-    public AdsBrand insert(AdsBrand adsBrand) {
-        this.adsBrandDao.insert(adsBrand);
-        return adsBrand;
-    }
-
-    /**
-     * 修改数据
-     *
-     * @param adsBrand 实例对象
-     * @return 实例对象
-     */
-    @Override
-    public AdsBrand update(AdsBrand adsBrand) {
-        this.adsBrandDao.update(adsBrand);
-        return this.queryById(adsBrand.getId());
-    }
-
-    /**
-     * 通过主键删除数据
-     *
-     * @param id 主键
-     * @return 是否成功
-     */
-    @Override
-    public boolean deleteById(Integer id) {
-        return this.adsBrandDao.deleteById(id) > 0;
     }
 
     @Override
@@ -127,5 +94,15 @@ public class AdsBrandServiceImpl implements AdsBrandService {
         account.setPass("hGkdHUSHE2QjxwHo");
         account.setSslEnable(true);
         MailUtil.send(account, "houlei@gameley.com", "订单预警邮件","无效包名占比超过阈值，预警值为", false);
+    }
+
+    @Override
+    public AdPlanInfo convert(String str) {
+        return null;
+    }
+
+    @Override
+    public Employee getResult(String result) {
+        return null;
     }
 }

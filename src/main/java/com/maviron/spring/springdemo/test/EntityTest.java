@@ -1,10 +1,12 @@
 package com.maviron.spring.springdemo.test;
 
+import cn.hutool.core.collection.CollectionUtil;
+import cn.hutool.core.date.DateField;
+import cn.hutool.core.date.DateTime;
+import cn.hutool.core.date.DateUtil;
+
 import java.io.Serializable;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author houlei
@@ -78,8 +80,39 @@ public class EntityTest implements Serializable {
     }
 
     public static void main(String[] args) {
-        List<String> list = Arrays.asList("1", "6", "16", "60", "20");
-        Collections.sort(list);
+        List<EntityTest> list = new ArrayList<>();
+        EntityTest entityTest1 = new EntityTest();
+        entityTest1.setDt("1");
+        entityTest1.setNewUserCount("200");
+        entityTest1.setRetentionCount("300");
+        EntityTest entityTest2 = new EntityTest();
+        entityTest2.setDt("1");
+        entityTest2.setNewUserCount("200");
+        entityTest2.setRetentionCount("300");
+        EntityTest entityTest3 = new EntityTest();
+        entityTest3.setDt("1");
+        entityTest3.setNewUserCount("200");
+        entityTest3.setRetentionCount("300");
+        list.add(entityTest1);
+        list.add(entityTest2);
+        list.add(entityTest3);
         System.out.println(list);
+        DateTime truncate = DateUtil.truncate(new Date(), DateField.HOUR);
+        System.out.println(truncate);
+        Object s = DateUtil.offsetHour(new Date(), -1).hour(true);
+        DateTime yyyyMMddHH = DateUtil.parse("2022120712", "yyyyMMddHH");
+        String s1 = yyyyMMddHH.toDateStr();
+        System.out.println(s1);
+        System.out.println(s);
+        String dateTime = DateUtil.format(DateUtil.offsetHour(new Date(), -1),"yyyyMMddHH");
+
+        System.out.println(dateTime);
+
+        List<Integer> integers = CollectionUtil.newArrayList(1,2,3,4);
+        System.out.println(integers);
+        Collections.shuffle(integers);
+        System.out.println(integers);
+        List<Integer> list1 = CollectionUtil.removeAny(integers, 2);
+        System.out.println(list1);
     }
 }

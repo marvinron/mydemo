@@ -30,4 +30,13 @@ public enum  RedisLockTypeEnum {
     public String getUniqueKey(String key) {
         return String.format("%s:%s", this.getCode(), key);
     }
+
+    public static void main(String[] args) {
+        long l = 1667793750167L;
+        System.out.println(l);
+        long l1 = l + 60 * 60 * 1000;
+        System.out.println(l1);
+        System.out.println();
+
+    }
 }

@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Map;
+
 /**
  * @author houlei
  * @version 1.0.0
@@ -17,11 +19,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("sublistTable")
 public class SublistTableController {
+
     @Autowired
-    private AdsBrandService adsBrandService;
+    private Map<String, AdsBrandService> adsBrandServiceMap;
+
     @RequestMapping("test")
-    public Result getAdsBrand(){
-        AdsBrand adsBrand = adsBrandService.test(1);
-        return Result.success(adsBrand);
+    public Result getAdsBrand() {
+        AdsBrandService none = adsBrandServiceMap.get("none");
+        //AdsBrand adsBrand = adsBrandService.test(1);
+        return Result.success(none);
     }
 }
