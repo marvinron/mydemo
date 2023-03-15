@@ -1,3 +1,11 @@
 1、用函数型function替换if else @see com.maviron.spring.springdemo.function
 2、分支进行各个处理 @see com.maviron.spring.springdemo.demo.futuredemo.SendJoinGroupRequest
 3、用lambda表达式遍历树节点  com.maviron.spring.springdemo.demo.handletree.TestTreeMenu
+4、重试 采用springboot进行重试
+ <dependency>
+  <groupId>org.springframework.retry</groupId>
+  <artifactId>spring-retry</artifactId>
+ </dependency>
+ https://github.com/javastacks/spring-boot-best-practice
+5、使用递归遍历树 com.maviron.spring.springdemo.controller
+6、pipline设计模式 com.maviron.spring.springdemo.piplinedesign

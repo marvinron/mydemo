@@ -1,7 +1,13 @@
 package com.maviron.spring.springdemo.until;
 
 import cn.hutool.crypto.digest.DigestUtil;
+import com.maviron.spring.springdemo.entity.User;
 import org.apache.commons.lang3.StringUtils;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * @author poker.li
@@ -87,7 +93,26 @@ public class ConversionUtils {
     }
 
     public static void main(String[] args) {
-        System.out.println(encodeTo61(1376339701643390977L));
+        List<User> list = new ArrayList<>();
+        User user = new User();
+        user.setId("1");
+        user.setName("qwe");
+        user.setAge(12);
+        list.add(user);
+        User user1 = new User();
+        user1.setId("1");
+        user1.setName("ioow");
+        user1.setAge(15);
+        list.add(user1);
+        User user2 = new User();
+        user2.setId("3");
+        user2.setName("tyu");
+        user2.setAge(13);
+        list.add(user2);
+        Map<String, Integer> collect = list.stream().collect(Collectors.toMap(User::getId, User::getAge, (v1, v2) -> v2));
+        System.out.println(collect);
+        long l = decodeTo61("12312asdasdasghhjkhjk-sdfsdfsdf");
+        System.out.println(l);
 
     }
 

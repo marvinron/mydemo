@@ -71,7 +71,7 @@ public class MHash {
     }
 
     public static void main(String[] args) {
-        System.out.println(hash64("12"));
+        System.out.println(hash64("12321fhgfghfg78-dfgdgdreterterterteerte544"));
     }
     
 }

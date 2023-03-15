@@ -1,0 +1,9 @@
+syntax = "proto3";
+option java_outer_classname="DemoProto";
+option java_package="com.maviron.spring.springdemo.proto";
+message Demo{
+  //自身属性
+  int32 id = 1;
+  string code = 2;
+  string name = 3;
+}

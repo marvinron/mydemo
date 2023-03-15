@@ -132,9 +132,11 @@ public class HexUtil {
     }
 
     public static void main(String[] args) {
-        String s = long2Hex(12321321);
-        System.out.println(s);
-        System.out.println(hex2Long(s));
+        //String s = long2Hex(12321321);
+        //System.out.println(s);
+        //System.out.println(hex2Long(s));
+        long l = hexToLong48("123213dfsf76u657-asd2-asdas");
+        System.out.println(l);
     }
 
 }

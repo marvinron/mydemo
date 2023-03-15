@@ -286,7 +286,15 @@ public class LongEncoder {
     public static void main(String[] args) {
         long l = encode48(21);
         long l1 = decode48(7560234435459L);
-        System.out.println(l);
-        System.out.println(l1);
+        byte[] bytes = "12312jkdjkas90909".getBytes();
+        long l2 = bytes2Long(bytes);
+        //System.out.println(l2);
+        //int i = Integer.parseInt("12312jkdjkas90909");
+        String str = "12312jkdjkas90909";
+        char[] chars = str.toCharArray();
+        for(char c : chars){
+            System.out.println(Integer.valueOf(c));
+        }
+
     }
 }

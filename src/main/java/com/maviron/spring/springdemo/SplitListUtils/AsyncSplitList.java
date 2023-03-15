@@ -1,7 +1,6 @@
 package com.maviron.spring.springdemo.SplitListUtils;
 
 import org.apache.commons.collections4.CollectionUtils;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ArrayBlockingQueue;

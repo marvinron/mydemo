@@ -65,11 +65,13 @@ public class MD5Tool {
     }
 
     public static void main(String[] args) {
-        String string = null;
-        List<String> collect = Stream.of(string.split(",")).map(s -> s + "werwer").collect(Collectors.toList());
-        for (String str : collect) {
-            System.out.println(str);
-        }
+        //String string = null;
+        //List<String> collect = Stream.of(string.split(",")).map(s -> s + "werwer").collect(Collectors.toList());
+        //for (String str : collect) {
+        //    System.out.println(str);
+        //}
+        String s = byteArrayToHex("asdasdasdasd".getBytes());
+        System.out.println(s);
 
     }
 }
