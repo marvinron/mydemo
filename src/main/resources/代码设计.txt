@@ -16,3 +16,4 @@
                 </dependency>
   https://mp.weixin.qq.com/s/8djOSaML-X8TeNC9WiVkgA
 8、使用BeanPostProcessor自动映射AB测试
+9、动态sql  com.maviron.spring.springdemo.controller.TableTestController

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.maviron.spring.springdemo.dao.DmpTestDao">
+
+    <resultMap type="com.maviron.spring.springdemo.entity.DmpTest" id="DmpTestMap">
+        <result property="appName" column="app_name" jdbcType="VARCHAR"/>
+        <result property="packageName" column="package_name" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--新增所有列-->
+    <insert id="insert">
+       ${insertStatement}
+    </insert>
+
+    <insert id="insertBatch" keyProperty="" useGeneratedKeys="true">
+        insert into dmp_test(app_name, package_name)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.appName}, #{entity.packageName})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="" useGeneratedKeys="true">
+        insert into dmp_test(app_name, package_name)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.appName}, #{entity.packageName})
+        </foreach>
+        on duplicate key update
+        app_name = values(app_name) , package_name = values(package_name)
+    </insert>
+
+</mapper>
+
