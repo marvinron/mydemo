@@ -3,6 +3,8 @@ package com.maviron.spring.springdemo.entity;
 import cn.hutool.extra.mail.MailAccount;
 import cn.hutool.extra.mail.MailUtil;
 import com.alibaba.fastjson.JSONObject;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
 
 import javax.validation.constraints.*;
 import java.io.Serializable;
@@ -14,13 +16,14 @@ import java.io.Serializable;
  * @Description TODO
  * @createTime 2022年01月10日 09:22:00
  */
-
+//@Configuration
 public class User implements Serializable {
     private static final long serialVersionUID = 1015995795755954005L;
     private String id;
 
     @NotNull(message = "姓名不能为空")
     @Size(min = 1, max = 20, message = "姓名长度必须在1-20之间")
+    //@Value("${name}")
     private String name;
 
     @Min(value = 10, message = "年龄必须大于10")
@@ -84,13 +87,13 @@ public class User implements Serializable {
     }
 
     public static void main(String[] args) {
-       String json = "{\n" +
-               "  \"id\": \"\",\n" +
-               "  \"name\": \"\",\n" +
-               "  \"age\": 0,\n" +
-               "  \"email\": \"\",\n" +
-               "  \"sequence\": \"80\",\n" +
-               "}";
+        String json = "{\n" +
+                "  \"id\": \"\",\n" +
+                "  \"name\": \"\",\n" +
+                "  \"age\": 0,\n" +
+                "  \"email\": \"\",\n" +
+                "  \"sequence\": \"80\",\n" +
+                "}";
         User user = JSONObject.parseObject(json, User.class);
         System.out.println(user);
         MailAccount account = new MailAccount();
@@ -102,6 +105,6 @@ public class User implements Serializable {
         account.setPass("PFUOFODCGSVXRMQL");
         //account.setSslEnable(true);
 
-        MailUtil.send(account,"houlei801@163.com", "大数据发送的信息","value", false);
+        MailUtil.send(account, "houlei801@163.com", "大数据发送的信息", "value", false);
     }
 }

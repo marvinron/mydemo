@@ -9,3 +9,10 @@
  https://github.com/javastacks/spring-boot-best-practice
 5、使用递归遍历树 com.maviron.spring.springdemo.controller
 6、pipline设计模式 com.maviron.spring.springdemo.piplinedesign
+7、日志操作   <dependency>
+                    <groupId>io.github.mouzt</groupId>
+                    <artifactId>bizlog-sdk</artifactId>
+                    <version>1.0.1</version>
+                </dependency>
+  https://mp.weixin.qq.com/s/8djOSaML-X8TeNC9WiVkgA
+8、使用BeanPostProcessor自动映射AB测试

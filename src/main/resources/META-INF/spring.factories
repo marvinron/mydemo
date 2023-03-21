@@ -1,0 +1,4 @@
+com.maviron.spring.springdemo.aspringexpand.spiexpend=\
+  com.maviron.spring.springdemo.entity.User
+org.springframework.boot.env.PropertySourceLoader=\
+  com.maviron.spring.springdemo.aspringexpand.propertySourceLoaderexpend.JsonPropertySourceLoader
