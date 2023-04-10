@@ -19,3 +19,4 @@
 9、动态sql  com.maviron.spring.springdemo.controller.TableTestController
 10、使用fetchSize提高获取数据的效率
 11、PageHelper.startPage()后面必须紧跟list所以有一定的局限性  使用com.maviron.spring.springdemo.pageHelperUtil  进行优化即可
+12、比较两个字段并获取其中不同值的属性 com.maviron.spring.springdemo.beanequals.AbstractContrast
