@@ -1,10 +1,22 @@
 package com.maviron.spring.springdemo.beanequals;
 
+import cn.hutool.cache.CacheUtil;
+import cn.hutool.cache.impl.FIFOCache;
+import cn.hutool.core.convert.Convert;
+import cn.hutool.core.lang.Console;
+import cn.hutool.core.util.IdUtil;
+import cn.hutool.core.util.StrUtil;
+import cn.hutool.crypto.SecureUtil;
+import cn.hutool.crypto.SmUtil;
+import cn.hutool.crypto.asymmetric.KeyType;
+import cn.hutool.crypto.asymmetric.SM2;
+import cn.hutool.http.HttpUtil;
 import com.maviron.spring.springdemo.thread.EntityTest;
 
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.Method;
+import java.security.KeyPair;
 import java.util.*;
 
 /**
@@ -119,5 +131,33 @@ public abstract class AbstractContrast {
         entity1.setRate(2.0);
         Map<String, List<Object>> stringListMap = compareFields(entity, entity1);
         System.out.println(stringListMap);
+        String s = Convert.toStr(1);
+        System.out.println(s);
+        String s1 = IdUtil.simpleUUID();
+        System.out.println(s1);
+        String s2 = HttpUtil.get("http://baidu.com");
+        System.out.println(s2);
+        FIFOCache<Object, Object> objects =
+                CacheUtil.newFIFOCache(3);
+        Console.log("asdasdas{}","0000");
+
+        String text = "JavaGuide:一份涵盖大部分 Java 程序员所需要掌握的核心知识。准备 Java 面试，首选 JavaGuide！";
+        System.out.println("原文：" + text);
+
+        KeyPair pair = SecureUtil.generateKeyPair("SM2");
+             // 公钥
+        byte[] privateKey = pair.getPrivate().getEncoded();
+          // 私钥
+        byte[] publicKey = pair.getPublic().getEncoded();
+
+        SM2 sm2 = SmUtil.sm2(privateKey, publicKey);
+        // 公钥加密，私钥解密
+        String encryptStr = sm2.encryptBcd(text, KeyType.PublicKey);
+        System.out.println("加密后：" + encryptStr);
+
+        String decryptStr = StrUtil.utf8Str(sm2.decryptFromBcd(encryptStr, KeyType.PrivateKey));
+        System.out.println("解密后：" + decryptStr);
+
+
     }
 }
