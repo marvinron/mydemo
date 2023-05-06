@@ -23,6 +23,6 @@ public class BasicValve<T> implements Value<T> {
 
     @Override
     public void invoke(T t) {
-        System.out.println("接收到处理了" + t);
+        System.out.println("Basic value 接收到处理了" + t);
     }
 }
