@@ -1,4 +1,4 @@
-package com.maviron.spring.springdemo.piplinedesign;
+package com.maviron.spring.springdemo.piplinedesign.piplineflow;
 
 /**
  * @author houlei
