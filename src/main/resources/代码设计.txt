@@ -22,3 +22,4 @@
 12、比较两个字段并获取其中不同值的属性 com.maviron.spring.springdemo.beanequals.AbstractContrast
 13、规则引擎 用于处理if else 的处理 com.maviron.spring.springdemo.regulationengine.RuleClass
 14、Pipline pipline模式 流水模式 通过next用于流程性校验 pipline的context模式 用于多线程的先后处理 com.maviron.spring.springdemo.piplinedesign
+15、责任链校验 com.maviron.spring.springdemo.design.chain.DefaultSignUpValidationService
