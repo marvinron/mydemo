@@ -23,3 +23,6 @@
 13、规则引擎 用于处理if else 的处理 com.maviron.spring.springdemo.regulationengine.RuleClass
 14、Pipline pipline模式 流水模式 通过next用于流程性校验 pipline的context模式 用于多线程的先后处理 com.maviron.spring.springdemo.piplinedesign
 15、责任链校验 com.maviron.spring.springdemo.design.chain.DefaultSignUpValidationService
+16、com.maviron.spring.springdemo.test.ShortTextUtil生成不重复的短字符串
+17、https://juejin.cn/post/7220434734965866556?utm_source=gold_browser_extension  mysql进行排名的模拟实现
+18、com.maviron.spring.springdemo.until.WeightedRandomSelector  权重的实现

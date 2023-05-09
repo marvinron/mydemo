@@ -13,7 +13,7 @@ import java.util.Set;
 @AllArgsConstructor
 public class DefaultSignUpValidationService implements SignUpValidationService {
 
-    private final UserRepository userRepository;
+    private final UserRepository userRepository = null;
 
     @Override
     public ValidationResult validate(SignUpCommand command) {

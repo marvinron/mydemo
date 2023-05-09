@@ -1,5 +1,6 @@
 package com.maviron.spring.springdemo.test;
 
+import cn.hutool.core.util.RandomUtil;
 import com.alibaba.fastjson.JSON;
 import com.maviron.spring.springdemo.entity.User;
 import org.slf4j.Logger;
@@ -52,12 +53,21 @@ public class Test {
         //user.setName("21321");
         //System.out.println(user.toString());
 
-        List<String> list = new ArrayList<>();
-        list.add("00001");
-        list.add("00004");
-        list.add("00007");
-        list.add("00010");
-        list.add("00013");
+        //List<String> list = new ArrayList<>();
+        //list.add("00001");
+        //list.add("00004");
+        //list.add("00007");
+        //list.add("00010");
+        //list.add("00013");
+        for (int j = 0; j < 10;j++) {
+            double random = Math.random();
+            System.out.println(random);
+            int v = (int)(Math.random() * 10 + 1);
+            System.out.println(v);
+            int i = RandomUtil.randomInt(100)+1;
+            System.out.println(i);
+        }
+
 
     }
 }

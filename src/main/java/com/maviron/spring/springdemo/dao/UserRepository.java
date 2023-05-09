@@ -1,6 +1,7 @@
 package com.maviron.spring.springdemo.dao;
 
 import com.maviron.spring.springdemo.design.chain.SignUpCommand;
+import org.apache.ibatis.annotations.Select;
 
 /**
  * @author admin
@@ -11,6 +12,8 @@ import com.maviron.spring.springdemo.design.chain.SignUpCommand;
  */
 public interface UserRepository {
 
+    @Select("select * from user")
     SignUpCommand findByUsername(String userName);
+    @Select("select * from user")
     SignUpCommand findByEmail(String email);
 }
