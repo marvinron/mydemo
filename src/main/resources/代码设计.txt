@@ -26,3 +26,9 @@
 16、com.maviron.spring.springdemo.test.ShortTextUtil生成不重复的短字符串
 17、https://juejin.cn/post/7220434734965866556?utm_source=gold_browser_extension  mysql进行排名的模拟实现
 18、com.maviron.spring.springdemo.until.WeightedRandomSelector  权重的实现
+19、arthas命令
+  jad --source-only com.alliance.adx.service.ikan.AdIkanService
+  dashboard
+  trace com.alliance.adx.service.impl.AbstractAdxResponseService getCheckBidResponses -v -n 5 --skipJDKMethod false '1==1'
+  watch com.alliance.adx.service.ikan.AdIkanService doHandle "{params,target,returnObj}"  -x 1 "params[2].getSposid().equals('30000339')"
+20、适配模式 易使用于参数转换或者不同参数的赋值 com.maviron.spring.springdemo.design.practise.ApiTest

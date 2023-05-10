@@ -9,10 +9,7 @@ import org.slf4j.MDC;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 import java.util.concurrent.DelayQueue;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -59,15 +56,45 @@ public class Test {
         //list.add("00007");
         //list.add("00010");
         //list.add("00013");
-        for (int j = 0; j < 10;j++) {
-            double random = Math.random();
-            System.out.println(random);
-            int v = (int)(Math.random() * 10 + 1);
-            System.out.println(v);
-            int i = RandomUtil.randomInt(100)+1;
-            System.out.println(i);
-        }
+        //for (int j = 0; j < 10;j++) {
+        //    double random = Math.random();
+        //    System.out.println(random);
+        //    int v = (int)(Math.random() * 10 + 1);
+        //    System.out.println(v);
+        //    int i = RandomUtil.randomInt(100)+1;
+        //    System.out.println(i);
+        //}
 
+        //List<String> stringList = Arrays.asList("hello", "world", "java", "stream");
+        //Map<Integer, List<String>> collect = stringList.stream().collect(Collectors.groupingBy(String::length));
+        //System.out.println(collect);
+        //
+        //List<Integer> numberList = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        //
+        //Map<Boolean, List<Integer>> result = numberList.stream()
+        //        .collect(Collectors.partitioningBy(n -> n % 2 == 0));
+        //
+        //System.out.println(result);
+
+        //Stream.iterate(new int[]{0, 1}, t -> new int[]{t[1], t[0] + t[1]})
+        //        .limit(10)
+        //        .map(t -> t[0])
+        //        .forEach(System.out::println);
+        //Stream.iterate(new int[]{0, 1}, t -> new int[]{t[1], t[0] + t[1]}).limit(10).map(t -> t[0]).forEach(System.out::println);
+        //
+        //List<String> list1 = Arrays.asList("hello", "world");
+        //List<String> list2 = Arrays.asList("java", "stream");
+        //List<String> collect = Stream.concat(list1.stream(), list2.stream()).collect(Collectors.toList());
+        //System.out.println(collect);
+
+        List<Integer> numberList = Arrays.asList(1, 3, 2, 4, 10, 6, 8, 7, 9, 6);
+
+        List<Integer> result = numberList.stream()
+                .sorted()
+                .unordered()
+                .collect(Collectors.toList());
+
+        System.out.println(result);
 
     }
 }
