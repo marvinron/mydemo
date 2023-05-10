@@ -1,5 +1,6 @@
 package com.maviron.spring.springdemo.design.practise;
 
+import cn.hutool.core.util.StrUtil;
 import com.alibaba.fastjson.JSON;
 
 import java.lang.reflect.InvocationTargetException;
@@ -22,7 +23,7 @@ public class MQAdapter {
         RebateInfo rebateInfo = new RebateInfo();
         for (String key : link.keySet()) {
             Object val = obj.get(link.get(key));
-            RebateInfo.class.getMethod("set" + key.substring(0, 1).toUpperCase() + key.substring(1), val.getClass()).invoke(rebateInfo, val);
+            RebateInfo.class.getMethod("set" + StrUtil.upperFirst(key), val.getClass()).invoke(rebateInfo, val);
         }
         return rebateInfo;
     }
