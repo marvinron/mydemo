@@ -32,3 +32,7 @@
   trace com.alliance.adx.service.impl.AbstractAdxResponseService getCheckBidResponses -v -n 5 --skipJDKMethod false '1==1'
   watch com.alliance.adx.service.ikan.AdIkanService doHandle "{params,target,returnObj}"  -x 1 "params[2].getSposid().equals('30000339')"
 20、适配模式 易使用于参数转换或者不同参数的赋值 com.maviron.spring.springdemo.design.practise.ApiTest
+21、使用Jprofier对内存和CPU进行分析
+22、dependencyManagement只是声明依赖，并不实现引入，因此子项目需要显示的声明需要用的依赖。如果不在子项目中声明依赖，是不会从父项目中继承下来；只有在子项目中写了该依赖项，并且没有指定具体版本，
+才会从父项目中继承该项，并且version和scope都读取自父pom;另外如果子项目中指定了版本号，那么会使用子项目中指定的jar版本
+23、分模块构建参考 https://juejin.cn/post/7204767643676786725?utm_source=gold_browser_extension
