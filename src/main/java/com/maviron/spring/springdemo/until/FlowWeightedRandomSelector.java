@@ -1,18 +1,19 @@
 package com.maviron.spring.springdemo.until;
 
+import cn.hutool.core.util.HashUtil;
+import cn.hutool.core.util.IdUtil;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 /**
- * 权重的工具类
+ * 流量变现根据字符串的hash值进行权重分配
  *
  * @param <T>
  */
-public class WeightedRandomSelector<T> {
+public class FlowWeightedRandomSelector<T> {
 
     private final List<Entry<T>> entries = new ArrayList<>();
-    private final Random random = new Random();
     private double totalWeight = 0;
 
     public void add(double weight, T item) {
@@ -23,8 +24,8 @@ public class WeightedRandomSelector<T> {
         entries.add(new Entry<>(totalWeight, item));
     }
 
-    public T select() {
-        double r = random.nextDouble() * totalWeight;
+    public T select(String param) {
+        double r = hashCodeMod(param);
         int low = 0, high = entries.size() - 1;
         while (low < high) {
             int mid = (low + high) / 2;
@@ -36,6 +37,13 @@ public class WeightedRandomSelector<T> {
         }
         return entries.get(low).item;
     }
+    private static long hashCodeMod(String param) {
+        long hashValue = HashUtil.mixHash(param);
+        long mod = 100;
+        long digit = Math.abs(hashValue) % mod;
+        return digit;
+    }
+
 
     private static class Entry<T> {
         final double weight;
@@ -48,13 +56,14 @@ public class WeightedRandomSelector<T> {
     }
 
     public static void main(String[] args) {
-        WeightedRandomSelector<String> selector = new WeightedRandomSelector<>();
+        FlowWeightedRandomSelector<String> selector = new FlowWeightedRandomSelector<>();
         selector.add(60, "A");
         selector.add(40, "B");
         //selector.add(3.0, "C");
 
         for (int i = 0; i < 100; i++) {
-            String item = selector.select();
+            String param = IdUtil.simpleUUID();
+            String item = selector.select(param);
             System.out.println(item);
         }
 

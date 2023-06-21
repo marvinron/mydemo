@@ -150,7 +150,7 @@
         <dependency>
             <groupId>org.redisson</groupId>
             <artifactId>redisson-spring-boot-starter</artifactId>
-            <version>3.11.4</version>
+            <version>3.14.0</version>
         </dependency>
         <dependency>
             <groupId>com.maxmind.geoip2</groupId>
@@ -185,6 +185,12 @@
             <version>4.1.0</version>
         </dependency>
 
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+
         <!--规则定义文件格式，支持json,yaml等-->
         <dependency>
             <groupId>org.jeasy</groupId>
@@ -197,6 +203,11 @@
             <groupId>org.jeasy</groupId>
             <artifactId>easy-rules-mvel</artifactId>
             <version>4.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>30.1.1-jre</version>
         </dependency>
     </dependencies>
 

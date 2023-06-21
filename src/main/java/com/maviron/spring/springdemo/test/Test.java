@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -87,14 +88,30 @@ public class Test {
         //List<String> collect = Stream.concat(list1.stream(), list2.stream()).collect(Collectors.toList());
         //System.out.println(collect);
 
-        List<Integer> numberList = Arrays.asList(1, 3, 2, 4, 10, 6, 8, 7, 9, 6);
+        //List<Integer> numberList = Arrays.asList(1, 3, 2, 4, 10, 6, 8, 7, 9, 6);
+        //
+        //List<Integer> result = numberList.stream()
+        //        .sorted()
+        //        .unordered()
+        //        .collect(Collectors.toList());
+        //
+        //System.out.println(result);
+        //
+        //String string = BigDecimal.valueOf(1100).divide(new BigDecimal("1").add(new BigDecimal(20).divide(new BigDecimal("100"))), 2, BigDecimal.ROUND_DOWN).toString();
+        //System.out.println(string);
+        for (int i = 0; i < 10; i++) {
+            int a = getfeibonaALong(i);
+            System.out.printf("Fibonacci of %d is: %d \n", i, a);
+        }
+    }
 
-        List<Integer> result = numberList.stream()
-                .sorted()
-                .unordered()
-                .collect(Collectors.toList());
+    public static int getfeibonaALong(int number) {
 
-        System.out.println(result);
+        if (number == 0 || number == 1) {
+            return number;
+        }
+        return getfeibonaALong(number - 1) + getfeibonaALong(number - 2);
 
     }
+
 }

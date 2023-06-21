@@ -1,10 +1,5 @@
 package com.maviron.spring.springdemo.entity;
 
-import org.apache.commons.lang3.ObjectUtils;
-import org.apache.commons.lang3.StringUtils;
-
-import java.util.Calendar;
-
 public class AdPlanInfo {
     /**
      * 广告计划ID
