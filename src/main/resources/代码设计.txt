@@ -42,4 +42,5 @@
    3、通过设置上下文，每执行一个方法将结果放到上下文中，下一个方法调用时会调取上下文的结果继续执行
    4、这个上下文在线程中是单例的
 25、版本的比较  com.maviron.spring.springdemo.demo.compareVersion
+26、actor模式  com.maviron.spring.springdemo.actor
 

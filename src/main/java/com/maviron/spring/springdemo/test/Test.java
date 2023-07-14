@@ -99,10 +99,13 @@ public class Test {
         //
         //String string = BigDecimal.valueOf(1100).divide(new BigDecimal("1").add(new BigDecimal(20).divide(new BigDecimal("100"))), 2, BigDecimal.ROUND_DOWN).toString();
         //System.out.println(string);
-        for (int i = 0; i < 10; i++) {
-            int a = getfeibonaALong(i);
-            System.out.printf("Fibonacci of %d is: %d \n", i, a);
-        }
+        //for (int i = 0; i < 10; i++) {
+        //    int a = getfeibonaALong(i);
+        //    System.out.printf("Fibonacci of %d is: %d \n", i, a);
+        //}
+        double weight = 10.0;
+        double decayedWeight = decayWeight(weight);
+        System.out.println(decayedWeight);
     }
 
     public static int getfeibonaALong(int number) {
@@ -112,6 +115,12 @@ public class Test {
         }
         return getfeibonaALong(number - 1) + getfeibonaALong(number - 2);
 
+    }
+
+    public static double decayWeight(double weight) {
+        int numDecays = (int) (Math.log(0.001 / weight) / Math.log(0.5));
+        double decayedWeight = weight * Math.pow(0.5, numDecays);
+        return decayedWeight;
     }
 
 }
