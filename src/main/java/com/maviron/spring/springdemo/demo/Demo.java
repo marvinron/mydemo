@@ -1,6 +1,7 @@
 package com.maviron.spring.springdemo.demo;
 
 
+import cn.hutool.core.util.StrUtil;
 import com.google.common.collect.Sets;
 import com.maviron.spring.springdemo.entity.User;
 import org.apache.commons.collections4.CollectionUtils;
@@ -28,14 +29,16 @@ public class Demo {
         //Collections.shuffle(list);
         //String s = list.get(0);
         //System.out.println(s);
-        int i = compareVersion("2.0.4.1.2", "2.0.4.1.1");
-        if (i > 0) {
-            System.out.println("左边大");
-        } else if (i < 0) {
-            System.out.println("右边大");
-        } else {
-            System.out.println("相等");
-        }
+        //int i = compareVersion("2.0.4.1.2", "2.0.4.1.1");
+        //if (i > 0) {
+        //    System.out.println("左边大");
+        //} else if (i < 0) {
+        //    System.out.println("右边大");
+        //} else {
+        //    System.out.println("相等");
+        //}
+        List<String> list = StrUtil.splitTrim("1 ,2 ,4,56,7", ",");
+        System.out.println(list);
     }
 
     /**

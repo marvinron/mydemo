@@ -29,4 +29,9 @@ public class BeanSearchController {
         // 这里咱们只写一行代码
         return mapSearcher.search(User.class, MapUtils.flat(request.getParameterMap()));
     }
+    @GetMapping("/test")
+    public String test(HttpServletRequest request) {
+        // 这里咱们只写一行代码
+        return "test....ing";
+    }
 }

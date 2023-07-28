@@ -1,5 +1,8 @@
 package com.maviron.spring.springdemo.test;
 
+import cn.hutool.core.date.DateField;
+import cn.hutool.core.date.DateTime;
+import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.util.RandomUtil;
 import com.alibaba.fastjson.JSON;
 import com.maviron.spring.springdemo.entity.User;
@@ -103,9 +106,12 @@ public class Test {
         //    int a = getfeibonaALong(i);
         //    System.out.printf("Fibonacci of %d is: %d \n", i, a);
         //}
-        double weight = 10.0;
-        double decayedWeight = decayWeight(weight);
-        System.out.println(decayedWeight);
+        //double weight = 10.0;
+        //double decayedWeight = decayWeight(weight);
+        //System.out.println(decayedWeight);
+        DateTime offset = DateUtil.offset(new Date(), DateField.DAY_OF_YEAR, -3);
+        System.out.println(offset);
+
     }
 
     public static int getfeibonaALong(int number) {

@@ -19,8 +19,8 @@ import java.io.File;
 public class DemoController {
     @RequestMapping("method")
     public String addMethod()  throws Exception{
-        File file = new File("123.txt");
-        FileUtils.write(file,"这是个test_txt",Charsets.toCharset("UTF-8"));
+        //File file = new File("123.txt");
+        //FileUtils.write(file,"这是个test_txt",Charsets.toCharset("UTF-8"));
        return "true";
     }
 }
