@@ -28,12 +28,12 @@ public class TestRedis {
         StopWatch stopWatch = new StopWatch();
         Jedis jedis = jedisPool.getResource();
         stopWatch.start();
-        Boolean asdsadas12 = jedis.setbit("asdsadas12", 111111111, String.valueOf(1));
+        //Boolean asdsadas12 = jedis.setbit("asdsadas12", 111111111, String.valueOf(1));
         //jedis.del("asdsadas12");
         stopWatch.stop();
         long totalTimeMillis = stopWatch.getTotalTimeMillis();
         System.out.println("耗费时间是 " + totalTimeMillis);
-        System.out.println(asdsadas12);
+        //System.out.println(asdsadas12);
         //Boolean asdsadas121 = jedis.getbit("asdsadas12", 111111111);
         //Long asdsadas122 = jedis.bitcount("asdsadas12");
         //System.out.println(asdsadas122);

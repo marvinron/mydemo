@@ -1,6 +1,7 @@
 package com.maviron.spring.springdemo.guava;
 
 import java.nio.charset.StandardCharsets;
+import java.text.MessageFormat;
 import java.util.Collections;
 
 import javax.servlet.http.HttpServletRequest;
@@ -43,5 +44,9 @@ public class RateLimiterInterceptor extends HandlerInterceptorAdapter {
         response.setContentType(MediaType.TEXT_PLAIN_VALUE);
         response.getWriter().write(JSONObject.toJSONString(Result.success(Collections.EMPTY_LIST)));
         return false;
+    }
+
+    public static void main(String[] args) {
+
     }
 }

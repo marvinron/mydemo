@@ -4,13 +4,13 @@ import com.opencsv.CSVParser;
 import com.opencsv.CSVReader;
 import org.redisson.Redisson;
 import org.redisson.api.RBloomFilter;
+import org.redisson.api.RRateLimiter;
 import org.redisson.api.RedissonClient;
 import org.redisson.config.Config;
 
-import java.io.DataInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStreamReader;
+import java.io.*;
+import java.math.BigDecimal;
+import java.util.UUID;
 
 /**
  * @author houlei
@@ -38,13 +38,35 @@ public class CsvTest {
             e.printStackTrace();
         }
     }
+    public static String readTxt(File file) throws IOException {
+        String s = "";
+        InputStreamReader in = new InputStreamReader(new FileInputStream(file),"UTF-8");
+        BufferedReader br = new BufferedReader(in);
+        StringBuffer content = new StringBuffer();
+        while ((s=br.readLine())!=null){
+            System.out.println(s);
+        }
+        return content.toString();
+    }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
         RedissonClient redissonClient = getRedissonClient();
-        RBloomFilter<Object> blackDeviceBloomFilter = redissonClient.getBloomFilter("blackOAIDBloomFilter");
-        blackDeviceBloomFilter.tryInit(100000000L, 0.05);
-        readCsv("src/main/resources/xintongyuan-oaid-1.csv", blackDeviceBloomFilter);
-        redissonClient.shutdown();
+        RRateLimiter rateLimiter = redissonClient.getRateLimiter("rqps_3157");
+        boolean b = rateLimiter.tryAcquire();
+        System.out.println(b);
+        //RBloomFilter<Object> blackDeviceBloomFilter = redissonClient.getBloomFilter("pddstate0822BloomFilter");
+        //boolean contains = blackDeviceBloomFilter.contains("72f8c713d9174c158b3ee769d3d5db03_oaid_07D7D3C3A8A94045882A54E5AAD9D8F19b19c62594852d831242a1ad5f227c84");
+        //System.out.println(contains);
+        //blackDeviceBloomFilter.tryInit(100000000L, 0.05);
+        //readCsv("src/main/resources/xintongyuan-oaid-1.csv", blackDeviceBloomFilter);
+        //redissonClient.shutdown();
+        //readTxt(new File("E:\\myproject\\maviron\\src\\main\\resources\\123.txt"));
+        //String replace = UUID.randomUUID().toString().replace("-", "");
+        //System.out.println(replace);
+        //String bigDecimal = new BigDecimal(5).add((new BigDecimal(5).multiply(new BigDecimal(1).divide(new BigDecimal("100"))))).setScale(2,BigDecimal.ROUND_DOWN).toString();
+        //System.out.println(bigDecimal);
+        //String result = new BigDecimal(5.05).add((new BigDecimal(5.05).multiply(new BigDecimal(15).divide(new BigDecimal("100"))))).setScale(2,BigDecimal.ROUND_DOWN).toString();
+        //System.out.println(result);
     }
 
     private static RedissonClient getRedissonClient() {

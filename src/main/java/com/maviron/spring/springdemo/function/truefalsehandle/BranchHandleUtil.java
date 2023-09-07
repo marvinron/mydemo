@@ -1,5 +1,7 @@
 package com.maviron.spring.springdemo.function.truefalsehandle;
 
+import cn.hutool.core.date.StopWatch;
+
 /**
  * @author houlei
  * @version 1.0.0
@@ -20,7 +22,14 @@ public class BranchHandleUtil {
     }
 
     public static void main(String[] args) {
-        BranchHandleUtil.doHandle(true).trueOrFalseHandle(trueHandle(),falseHandle());
+        StopWatch stopWatch = new StopWatch();
+        stopWatch.start();
+        for (int i = 0; i < 100; i++) {
+
+            BranchHandleUtil.doHandle(true).trueOrFalseHandle(trueHandle(),falseHandle());
+        }
+        stopWatch.stop();
+        System.out.println(stopWatch.getTotalTimeMillis());
     }
 
     private static Runnable falseHandle() {

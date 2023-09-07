@@ -42,7 +42,7 @@ spring创建bean分三步：
 
 
 
-Function类型的函数接口
+Function 类型的函数接口
 Supplier 不接受参数 返回数据
 Consumer 是接受参数，不返回数据
 Runnable 是无参无返回类型的函数

@@ -1,9 +1,11 @@
 package com.maviron.spring.springdemo.demo.bloomfilter;
 
 import org.redisson.Redisson;
-import org.redisson.api.RBloomFilter;
-import org.redisson.api.RedissonClient;
+import org.redisson.api.*;
 import org.redisson.config.Config;
+
+import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author houlei
@@ -15,12 +17,12 @@ import org.redisson.config.Config;
 public class BloomFilter {
     public static void main(String[] args) {
         RedissonClient redissonClient = getRedissonClient();
-        RBloomFilter<Object> mytest0705Filter = redissonClient.getBloomFilter("posNoFillFilter20230727");
-        //mytest0705Filter.tryInit(800000000L, 0.09);
-        //mytest0705Filter.add("5f60541dfc654605a874ce0986c13ac5_oaid_ED7A268548E2");
-        //mytest0705Filter.expire(1L,TimeUnit.HOURS);
-        boolean flag = mytest0705Filter.contains("30001252_BC78D0B9-76F7-421C-A8DC-564C796E15BD");
-        System.out.println(flag);
+        //RBloomFilter<Object> mytest0705Filter = redissonClient.getBloomFilter("淘宝-点击人群-1200w（oaid+imei）-8.17");
+        ////mytest0705Filter.tryInit(100000000L, 0.09);
+        ////mytest0705Filter.add("123456_oaid_344CB49E7BE24AD8B5976366A931311816a7e51672217d08123cebc303fe7f83");
+        ////mytest0705Filter.expire(1L,TimeUnit.HOURS);
+        //boolean flag = mytest0705Filter.contains("b03ed75dced94621b2fbb3b5c95a00f3_imei_869096037044839");
+        //System.out.println(flag);
         //boolean flag1 = mytest0705Filter.contains("5f60541dfc654605a874ce0986c13ac5_oaid_ED7A268548E200");
         //System.out.println(flag1);
         //boolean flag1 = mytest0705Filter.contains("asdas3232_123456_1000012");
@@ -31,6 +33,17 @@ public class BloomFilter {
         //System.out.println(yyyyMMdd);
         //String key = String.join("_","12312","fghf");
         //System.out.println(key);
+        long start = System.currentTimeMillis();
+        RRateLimiter rateLimiter = redissonClient.getRateLimiter("123456");
+        if (rateLimiter.isExists() && !Objects.equals(Long.parseLong("2000"), rateLimiter.getConfig().getRate())) {
+            redissonClient.getRateLimiter("123456").delete();
+        }
+        if (!rateLimiter.isExists()) {
+            rateLimiter.trySetRate(RateType.OVERALL, Long.parseLong("2000"), 1, RateIntervalUnit.SECONDS);
+        }
+        boolean b = rateLimiter.tryAcquire();
+        long end = System.currentTimeMillis();
+        System.out.println("耗时 "+(end - start));
         redissonClient.shutdown();
     }
     //private static RedissonClient getRedissonClient() {

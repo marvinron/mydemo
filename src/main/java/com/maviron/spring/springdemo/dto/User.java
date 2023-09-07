@@ -20,6 +20,14 @@ public class User {
     @DbField("r.name")
     private String role;
 
+    public User(long id, String name, int age, int roleId, String role) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.roleId = roleId;
+        this.role = role;
+    }
+
     public long getId() {
         return id;
     }
