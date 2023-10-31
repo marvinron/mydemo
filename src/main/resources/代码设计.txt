@@ -43,4 +43,6 @@
    4、这个上下文在线程中是单例的
 25、版本的比较  com.maviron.spring.springdemo.demo.compareVersion
 26、actor模式  com.maviron.spring.springdemo.actor
+27、状态机的四大概念：状态、事件、动作和变换：https://mp.weixin.qq.com/s/n6QYCC4FD6PRafC2cruUXw
+28、大文件的上传 https://juejin.cn/post/7284630352788717608?utm_source=gold_browser_extension
 

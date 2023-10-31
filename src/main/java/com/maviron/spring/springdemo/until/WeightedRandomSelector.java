@@ -1,6 +1,7 @@
 package com.maviron.spring.springdemo.until;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -16,9 +17,9 @@ public class WeightedRandomSelector<T> {
     private double totalWeight = 0;
 
     public void add(double weight, T item) {
-        if (weight <= 0) {
-            throw new IllegalArgumentException("Weight must be positive");
-        }
+        //if (weight <= 0) {
+        //    throw new IllegalArgumentException("Weight must be positive");
+        //}
         totalWeight += weight;
         entries.add(new Entry<>(totalWeight, item));
     }
@@ -49,14 +50,40 @@ public class WeightedRandomSelector<T> {
 
     public static void main(String[] args) {
         WeightedRandomSelector<String> selector = new WeightedRandomSelector<>();
-        selector.add(60, "A");
-        selector.add(40, "B");
-        //selector.add(3.0, "C");
+        selector.add(0, "A");
+        selector.add(50, "B");
+        selector.add(50, "C");
+
 
         for (int i = 0; i < 100; i++) {
             String item = selector.select();
             System.out.println(item);
         }
+        //for (int i = 0; i < 100; i++) {
+        //    List<Integer> list = Arrays.asList(90, 10);
+        //    System.out.println(list);
+        //    int index = random(Arrays.asList(90,10));
+        //    System.out.println(index == 0);
+        //}
+    }
 
+    public static int random(List<Integer> weight) {
+        List<Integer> weightTmp = new ArrayList<>(weight.size() + 1);
+        weightTmp.add(0);
+        Integer sum = 0;
+        for (Integer d : weight) {
+            sum += d;
+            weightTmp.add(sum);
+        }
+        Random random = new Random();
+        int rand = random.nextInt(sum);
+        int index = 0;
+        for (int i = weightTmp.size() - 1; i > 0; i--) {
+            if (rand >= weightTmp.get(i)) {
+                index = i;
+                break;
+            }
+        }
+        return index;
     }
 }

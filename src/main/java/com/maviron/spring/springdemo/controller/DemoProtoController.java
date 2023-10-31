@@ -42,6 +42,7 @@ public class DemoProtoController {
         String print = JsonFormat.printer().print(qwewq);
         //HttpHeaders headers = new HttpHeaders();
         response.setContentType(MediaType.APPLICATION_OCTET_STREAM_VALUE);
+        response.setCharacterEncoding("UTF-8");
         ServletOutputStream outputStream = response.getOutputStream();
         qwewq.writeTo(outputStream);
         outputStream.flush();

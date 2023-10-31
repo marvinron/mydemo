@@ -2,7 +2,6 @@ package com.maviron.spring.springdemo.event.orderevent;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationContext;
-import org.springframework.stereotype.Service;
 
 /**
  * @author houlei
@@ -12,7 +11,7 @@ import org.springframework.stereotype.Service;
  * @createTime 2022年08月31日 15:50:00
  */
 @Slf4j
-@Service("orderService")
+//@Service("orderService")
 public class OrderService {
     private final ApplicationContext applicationContext;
 

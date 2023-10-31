@@ -34,6 +34,24 @@ public class User implements Serializable {
     private String email;
 
     private Long sequence;
+    private UserVo userVo;
+    private Double salery;
+
+    public Double getSalery() {
+        return salery;
+    }
+
+    public void setSalery(Double salery) {
+        this.salery = salery;
+    }
+
+    public UserVo getUserVo() {
+        return userVo;
+    }
+
+    public void setUserVo(UserVo userVo) {
+        this.userVo = userVo;
+    }
 
     public Long getSequence() {
         return sequence;

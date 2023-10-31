@@ -1,5 +1,9 @@
 package com.maviron.spring.springdemo.demo.abstractdemo;
 
+import com.maviron.spring.springdemo.entity.User;
+import org.apache.commons.lang3.StringUtils;
+import org.junit.Test;
+
 /**
  * @author houlei
  * @version 1.0.0
@@ -17,9 +21,17 @@ public class Provider extends AbstractProvider {
         executeCommand(key, () -> System.out.println("执行了判断是否存在的指令"+key),null);
     }
 
+    @Test
+    public void test() {
+        get("wwww");
+    }
     public static void main(String[] args) {
-        Provider provider = new Provider();
-        provider.get("dddd");
-        provider.exists("sssss");
+        User user = new User();
+       String str = "http://www.baidu.com";
+        user.setName(str);
+        StringBuilder sb = new StringBuilder(user.getName());
+        sb.append("=====");
+        System.out.println(user.getName());
+
     }
 }

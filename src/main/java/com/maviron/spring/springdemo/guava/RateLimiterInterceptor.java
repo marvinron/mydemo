@@ -3,6 +3,9 @@ package com.maviron.spring.springdemo.guava;
 import java.nio.charset.StandardCharsets;
 import java.text.MessageFormat;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -47,6 +50,11 @@ public class RateLimiterInterceptor extends HandlerInterceptorAdapter {
     }
 
     public static void main(String[] args) {
-
+        Map<String,RateLimiter> map = new HashMap<>();
+        RateLimiter rateLimiter = RateLimiter.create(10,1,TimeUnit.SECONDS);
+        map.put("123",rateLimiter);
+        RateLimiter rateLimiter1 = map.get("123");
+        double rate = rateLimiter1.getRate();
+        System.out.println(rate);
     }
 }

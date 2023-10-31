@@ -11,9 +11,8 @@ import org.springframework.stereotype.Component;
  * @Description 订单事件监听器
  * @createTime 2022年08月31日 15:39:00
  */
-@Component
-public class OrderProductListener implements ApplicationListener<OrderProductEvent> {
-    @Override
+//@Component
+public class OrderProductListener{
     public void onApplicationEvent(OrderProductEvent event) {
         String orderId = event.getOrderId();
         StopWatch clock = new StopWatch();
