@@ -37,6 +37,7 @@ public class User implements Serializable {
     private UserVo userVo;
     private Double salery;
 
+
     public Double getSalery() {
         return salery;
     }

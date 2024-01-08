@@ -109,8 +109,11 @@ public class Test {
         //double weight = 10.0;
         //double decayedWeight = decayWeight(weight);
         //System.out.println(decayedWeight);
-        DateTime offset = DateUtil.offset(new Date(), DateField.DAY_OF_YEAR, -3);
-        System.out.println(offset);
+        //DateTime offset = DateUtil.offset(new Date(), DateField.DAY_OF_YEAR, -3);
+        //System.out.println(offset);
+        int hour = DateUtil.hour(new Date(), true);
+        Double aDouble = Double.valueOf(null);
+        System.out.println(aDouble);
 
     }
 

@@ -80,7 +80,9 @@ public class KaisaUtil {
 
 
     public static void main(String[] args) {
-        String string = stringToAscii("dgdvgd");
-        System.out.println(string);
+        //String string = stringToAscii("dgdvgd");
+        //System.out.println(string);
+        String s = encryptKaisa("123213", 100);
+        System.out.println(s);
     }    
 }

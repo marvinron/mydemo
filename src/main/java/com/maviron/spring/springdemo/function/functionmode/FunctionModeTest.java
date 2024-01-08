@@ -19,22 +19,22 @@ import java.util.stream.Stream;
 public class FunctionModeTest {
     public static void main(String[] args) {
         //命令模式
-        List<Runnable> tasks = new ArrayList<Runnable>();
-        tasks.add(() -> log("log hi"));
-        tasks.add(() -> save("save haha"));
-        tasks.add(() -> send("send wwww"));
-        execute(tasks);
-
-        //模板模式
-        withResource(Resource::employResource);
-        withResource(Resource::useResource);
-        //职责链模式
-        File file = new File(File.Type.VIDEO, "video video i am video");
-        String s = Stream.<Function<File, Optional<String>>>of(FunctionModeTest::parseText, FunctionModeTest::parseAudio, FunctionModeTest::parseVideo).map(f -> f.apply(file))
-                .filter(Optional::isPresent)
-                .findFirst()
-                .flatMap(Function.identity())
-                .orElseThrow(() -> new RuntimeException("unknown type !"));
+        //List<Runnable> tasks = new ArrayList<Runnable>();
+        //tasks.add(() -> log("log hi"));
+        //tasks.add(() -> save("save haha"));
+        //tasks.add(() -> send("send wwww"));
+        //execute(tasks);
+        //
+        ////模板模式
+        //withResource(Resource::employResource);
+        //withResource(Resource::useResource);
+        ////职责链模式
+        //File file = new File(File.Type.VIDEO, "video video i am video");
+        //String s = Stream.<Function<File, Optional<String>>>of(FunctionModeTest::parseText, FunctionModeTest::parseAudio, FunctionModeTest::parseVideo).map(f -> f.apply(file))
+        //        .filter(Optional::isPresent)
+        //        .findFirst()
+        //        .flatMap(Function.identity())
+        //        .orElseThrow(() -> new RuntimeException("unknown type !"));
         //函数的装饰模式
         double v = new DefaultFunctionSalaryCalculator()
                 .andThen(Taxes::generalTax)

@@ -1,5 +1,7 @@
 package com.maviron.spring.springdemo.csv;
 
+import cn.hutool.core.util.HashUtil;
+import cn.hutool.core.util.StrUtil;
 import com.opencsv.CSVParser;
 import com.opencsv.CSVReader;
 import org.redisson.Redisson;
@@ -10,6 +12,7 @@ import org.redisson.config.Config;
 
 import java.io.*;
 import java.math.BigDecimal;
+import java.util.Optional;
 import java.util.UUID;
 
 /**
@@ -50,16 +53,14 @@ public class CsvTest {
     }
 
     public static void main(String[] args) throws Exception{
-        RedissonClient redissonClient = getRedissonClient();
-        RRateLimiter rateLimiter = redissonClient.getRateLimiter("rqps_3157");
-        boolean b = rateLimiter.tryAcquire();
-        System.out.println(b);
-        //RBloomFilter<Object> blackDeviceBloomFilter = redissonClient.getBloomFilter("pddstate0822BloomFilter");
-        //boolean contains = blackDeviceBloomFilter.contains("72f8c713d9174c158b3ee769d3d5db03_oaid_07D7D3C3A8A94045882A54E5AAD9D8F19b19c62594852d831242a1ad5f227c84");
-        //System.out.println(contains);
-        //blackDeviceBloomFilter.tryInit(100000000L, 0.05);
-        //readCsv("src/main/resources/xintongyuan-oaid-1.csv", blackDeviceBloomFilter);
-        //redissonClient.shutdown();
+        /*RedissonClient redissonClient = getRedissonClient();
+        String key = "4ae57798ed5d49c0be2f9c1918485459_oaid_79a39547-3aec-4086-8651-427a30dc5c6a";
+        RBloomFilter<Object> blackDeviceBloomFilter = redissonClient.getBloomFilter("4ae57798ed5d49c0be2f9c1918485459_"+hashCodeMod(key,16));
+        blackDeviceBloomFilter.tryInit(100L, 0.05);
+        blackDeviceBloomFilter.add(key);
+        boolean contains = blackDeviceBloomFilter.contains(key);
+        System.out.println(contains);
+        redissonClient.shutdown();*/
         //readTxt(new File("E:\\myproject\\maviron\\src\\main\\resources\\123.txt"));
         //String replace = UUID.randomUUID().toString().replace("-", "");
         //System.out.println(replace);
@@ -67,15 +68,25 @@ public class CsvTest {
         //System.out.println(bigDecimal);
         //String result = new BigDecimal(5.05).add((new BigDecimal(5.05).multiply(new BigDecimal(15).divide(new BigDecimal("100"))))).setScale(2,BigDecimal.ROUND_DOWN).toString();
         //System.out.println(result);
+        //Integer num = 20;
+        //String s = Optional.ofNullable(num).map(String::valueOf).orElse(null);
+        //System.out.println(s);
+        //StrUtil.replace()
     }
 
     private static RedissonClient getRedissonClient() {
         String auth = "Gameley668";
-        String clusterUrl = "bj-crs-934sdw1s.sql.tencentcdb.com";
-        String clusterPort = "22022";
+        String clusterUrl = "bj-crs-evk1h6lo.sql.tencentcdb.com";
+        String clusterPort = "27531";
         Config config = new Config();
         config.useSingleServer().setAddress("redis://" + clusterUrl + ":" + clusterPort);
         config.useSingleServer().setPassword(auth);
+        //config.useSingleServer().setDatabase(1);
         return Redisson.create(config);
+    }
+    public static int hashCodeMod(String param,int slice) {
+        long hashValue = HashUtil.mixHash(param);
+        int digit = (int)(Math.abs(hashValue) % slice);
+        return digit;
     }
 }

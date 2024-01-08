@@ -15,6 +15,9 @@
                     <version>1.0.1</version>
                 </dependency>
   https://mp.weixin.qq.com/s/8djOSaML-X8TeNC9WiVkgA
+  https://mp.weixin.qq.com/s?__biz=MzA4NDc2MDQ1Nw==&mid=2650261009&idx=1&sn=f1f3f87aad0b3cd7bdbad1f9af63d9c2&chksm=87e124f7b096ade1c4eef405c34d8acd1f5e8740fe462e2e4cb90dee7ac5f74938d48eb02a96&scene=132&exptype=timeline_recommend_article_extendread_samebiz#wechat_redirect
+  https://www.cnblogs.com/east7/p/15856741.html
+  https://juejin.cn/post/6996480742523928583
 8、使用BeanPostProcessor自动映射AB测试
 9、动态sql  com.maviron.spring.springdemo.controller.TableTestController
 10、使用fetchSize提高获取数据的效率
@@ -45,4 +48,5 @@
 26、actor模式  com.maviron.spring.springdemo.actor
 27、状态机的四大概念：状态、事件、动作和变换：https://mp.weixin.qq.com/s/n6QYCC4FD6PRafC2cruUXw
 28、大文件的上传 https://juejin.cn/post/7284630352788717608?utm_source=gold_browser_extension
+29、Spring关闭后执行的方法:1、注册钩子方法Runtime.getRuntime().addShutdownHook 2、@PreDestroy 3、实现DisposableBean接口
 

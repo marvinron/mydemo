@@ -12,7 +12,7 @@ import com.maviron.spring.springdemo.aspringexpand.beanpostprocessorAbTest.Routi
 //@RoutingSwitch("hello.switch")
 public interface HelloService {
 
-    @RoutingSwitch("A")
+    @RoutingSwitch("B")
     void sayHello();
 
     void sayHi();

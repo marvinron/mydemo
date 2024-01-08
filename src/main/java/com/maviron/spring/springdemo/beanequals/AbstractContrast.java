@@ -126,7 +126,7 @@ public abstract class AbstractContrast {
         entity.setRate(2.0);
 
         EntityTest entity1 = new EntityTest();
-        entity1.setId(8);
+        entity1.setId(1);
         entity1.setMoney(1.0);
         entity1.setRate(5.0);
         Map<String, List<Object>> stringListMap = compareFields(entity, entity1);

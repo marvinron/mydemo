@@ -8,12 +8,16 @@ import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.SetUtils;
 import org.jasypt.encryption.StringEncryptor;
 
+import java.io.File;
+import java.io.IOException;
 import java.math.BigDecimal;
+import java.net.MalformedURLException;
+import java.net.URLConnection;
 import java.time.LocalDateTime;
 import java.util.*;
 
 public class Demo {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         //LocalDateTime now = LocalDateTime.now();
         //System.out.println(now);
         //BigDecimal bigDecimal = BigDecimal.valueOf(12L);
@@ -37,8 +41,26 @@ public class Demo {
         //} else {
         //    System.out.println("相等");
         //}
-        List<String> list = StrUtil.splitTrim("1 ,2 ,4,56,7", ",");
-        System.out.println(list);
+        //List<String> list = StrUtil.splitTrim("1 ,2 ,4,56,7", ",");
+        //System.out.println(list);
+        //[溢价率/(1+溢价率)-DSP返点]/(1-DSP返点)
+        //BigDecimal divide;
+        //divide = (BigDecimal.valueOf(50).divide(new BigDecimal("100")).divide(new BigDecimal("1").add(BigDecimal.valueOf(50).divide(new BigDecimal("100"))), 6, BigDecimal.ROUND_DOWN).subtract(BigDecimal.valueOf(20).divide(new BigDecimal("100"))))
+        //        .divide(BigDecimal.valueOf(0), 4, BigDecimal.ROUND_HALF_UP);
+        //boolean b = BigDecimal.valueOf(0.07).compareTo(divide) == 0;
+
+        //BigDecimal divide1 = (BigDecimal.valueOf(50).divide(BigDecimal.valueOf(100))
+        //        .divide(BigDecimal.valueOf(1).add(BigDecimal.valueOf(50).divide(BigDecimal.valueOf(100))), 6, BigDecimal.ROUND_DOWN).subtract(BigDecimal.valueOf(20).divide(BigDecimal.valueOf(100))))
+        //        .divide(BigDecimal.valueOf(1).subtract(BigDecimal.valueOf(20).divide(BigDecimal.valueOf(100))), 4, BigDecimal.ROUND_DOWN);
+        //Double divide2 = -100.000000;
+        //boolean b = BigDecimal.valueOf(0).compareTo(BigDecimal.ZERO) == 0;
+        //System.out.println(b);
+
+        File file = new File("d:/test.jpg");
+        URLConnection connection = file.toURL().openConnection();
+        String mimeType = connection.getContentType();
+        System.out.println(mimeType);
+
     }
 
     /**
@@ -80,6 +102,44 @@ public class Demo {
         } else {
             return diff > 0 ? 1 : -1;
         }
+    }
+
+    public static Integer compareVersionByPointer(String version1, String version2) {
+        int m = version1.length();
+        int n = version2.length();
+
+        //两个指针
+        int p = 0, q = 0;
+
+        while (p < m || q < n) {
+            //累加version1区间的数字
+            int x = 0;
+            while (p < m && version1.charAt(p) != '.') {
+                x += x * 10 + (version1.charAt(p) - '0');
+                p++;
+            }
+
+            //累加version2区间的数字
+            int y = 0;
+            while (q < n && version2.charAt(q) != '.') {
+                y += y * 10 + (version2.charAt(q) - '0');
+                q++;
+            }
+
+            //判断
+            if (x > y) {
+                return 1;
+            }
+            if (x < y) {
+                return -1;
+            }
+
+            //跳过.
+            p++;
+            q++;
+        }
+        //version1等于version2
+        return 0;
     }
 
 }

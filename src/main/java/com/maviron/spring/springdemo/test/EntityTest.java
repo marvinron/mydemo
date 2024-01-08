@@ -1,23 +1,12 @@
 package com.maviron.spring.springdemo.test;
 
-import cn.hutool.core.collection.CollectionUtil;
-import cn.hutool.core.date.DateField;
-import cn.hutool.core.date.DateTime;
-import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.date.StopWatch;
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.annotation.JSONField;
-import org.apache.commons.lang3.StringUtils;
+import com.maviron.spring.springdemo.entity.User;
 
 import java.io.Serializable;
-import java.lang.reflect.Field;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author houlei
@@ -92,9 +81,9 @@ public class EntityTest implements Serializable {
                 '}';
     }
 
-    public static void main(String[] args) {
-        StopWatch stopWatch = new StopWatch();
-        stopWatch.start();
+    public static void main(String[] args) throws Exception{
+        //StopWatch stopWatch = new StopWatch();
+        //stopWatch.start();
         //List<EntityTest> list = new ArrayList<>();
         //EntityTest entityTest1 = new EntityTest();
         //entityTest1.setDt("1");
@@ -158,16 +147,51 @@ public class EntityTest implements Serializable {
         //    e.printStackTrace();
         //}
 
-        List<List<Integer>> nestedList = Arrays.asList(
-                Arrays.asList(1, 2),
-                Arrays.asList(3, 4),
-                Arrays.asList(5, 6)
-        );
-        Stream<Integer> flattenedStream = nestedList.stream().flatMap(List::stream);
-        Optional<Integer> max = flattenedStream.max(Comparator.comparing(e -> e.intValue()));
-        Integer integer = max.get();
-        System.out.println(integer);
+        //List<List<Integer>> nestedList = Arrays.asList(
+        //        Arrays.asList(1, 2),
+        //        Arrays.asList(3, 4),
+        //        Arrays.asList(5, 6)
+        //);
+        //Stream<Integer> flattenedStream = nestedList.stream().flatMap(List::stream);
+        //Optional<Integer> max = flattenedStream.max(Comparator.comparing(e -> e.intValue()));
+        //Integer integer = max.get();
+        //System.out.println(integer);
         //List<Integer> collect = flattenedStream.collect(Collectors.toList());
         //System.out.println(collect);
+        User user = new User();
+        user.setId("2123");
+        user.setName("dabai");
+        //JSONObject.toJSONString()
+
+        //JSONObject jsonObject = new JSONObject();
+        //jsonObject.put("name","dabai");
+        //jsonObject.put("work","programmer");
+
+        User person = new User();
+        user.setId("2123");
+        user.setName("dabai");
+
+        // 获取Person类的Class对象
+        StopWatch stop = new StopWatch();
+        stop.start();
+        Class personClass = person.getClass();
+        List<String> list = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            //Field name1 = personClass.getDeclaredField("name");
+            //name1.setAccessible(true);
+            //Object o = name1.get(user);
+            //
+            ////// 获取getName方法
+            ////Method getNameMethod = personClass.getMethod("getName");
+            ////
+            ////// 调用getName方法
+            ////String name = (String) getNameMethod.invoke(person);
+            String string = "asdasd";
+            list.add(string);
+        }
+        stop.stop();
+        System.out.println(list);
+        System.out.println(stop.getTotalTimeMillis());
+
     }
 }

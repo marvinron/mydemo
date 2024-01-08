@@ -4,6 +4,7 @@ import org.springframework.batch.core.configuration.annotation.EnableBatchProces
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.redis.repository.configuration.EnableRedisRepositories;
 import org.springframework.http.converter.protobuf.ProtobufHttpMessageConverter;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.client.RestTemplate;
@@ -13,6 +14,7 @@ import java.util.Collections;
 @SpringBootApplication
 @EnableScheduling
 @EnableBatchProcessing
+@EnableRedisRepositories
 public class SpringDemoApplication {
 
     public static void main(String[] args) {
