@@ -53,14 +53,14 @@ public class CsvTest {
     }
 
     public static void main(String[] args) throws Exception{
-        /*RedissonClient redissonClient = getRedissonClient();
-        String key = "4ae57798ed5d49c0be2f9c1918485459_oaid_79a39547-3aec-4086-8651-427a30dc5c6a";
+        RedissonClient redissonClient = getRedissonClient();
+        String key = "4ae57798ed5d49c0be2f9c1918485459_oaid_ad8a1ad6-13f2-4aff-af72-5f4f29749b28";
         RBloomFilter<Object> blackDeviceBloomFilter = redissonClient.getBloomFilter("4ae57798ed5d49c0be2f9c1918485459_"+hashCodeMod(key,16));
         blackDeviceBloomFilter.tryInit(100L, 0.05);
         blackDeviceBloomFilter.add(key);
         boolean contains = blackDeviceBloomFilter.contains(key);
         System.out.println(contains);
-        redissonClient.shutdown();*/
+        redissonClient.shutdown();
         //readTxt(new File("E:\\myproject\\maviron\\src\\main\\resources\\123.txt"));
         //String replace = UUID.randomUUID().toString().replace("-", "");
         //System.out.println(replace);

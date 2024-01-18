@@ -1,5 +1,7 @@
 package com.maviron.spring.springdemo.controller;
 
+import cn.hutool.core.collection.CollectionUtil;
+import cn.hutool.core.date.StopWatch;
 import com.alibaba.fastjson.JSONObject;
 import com.google.protobuf.util.JsonFormat;
 import com.maviron.spring.springdemo.entity.User;
@@ -8,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
@@ -36,11 +39,13 @@ public class DemoProtoController {
 
     @RequestMapping(value = "proto")
     @ResponseBody
-    public void testProto(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public void testProto(HttpServletRequest request, HttpServletResponse response,@RequestBody byte[] pbData) throws Exception {
         DemoProto.Demo demo = DemoProto.Demo.parseFrom(request.getInputStream());
         DemoProto.Demo qwewq = demo.toBuilder().setName("12321").setCode("qwewq").build();
         String print = JsonFormat.printer().print(qwewq);
         //HttpHeaders headers = new HttpHeaders();
+        String string = DemoProto.Demo.parseFrom(pbData).toString();
+        System.out.println(string);
         response.setContentType(MediaType.APPLICATION_OCTET_STREAM_VALUE);
         response.setCharacterEncoding("UTF-8");
         ServletOutputStream outputStream = response.getOutputStream();

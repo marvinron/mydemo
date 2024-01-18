@@ -49,4 +49,5 @@
 27、状态机的四大概念：状态、事件、动作和变换：https://mp.weixin.qq.com/s/n6QYCC4FD6PRafC2cruUXw
 28、大文件的上传 https://juejin.cn/post/7284630352788717608?utm_source=gold_browser_extension
 29、Spring关闭后执行的方法:1、注册钩子方法Runtime.getRuntime().addShutdownHook 2、@PreDestroy 3、实现DisposableBean接口
-
+30、非HTTP或者HTTPS的deeplink校验  com.maviron.spring.springdemo.dpvalidater.DeeplinkValidator
+31、本地缓存使用compute进行加减 com.maviron.spring.springdemo.cachecompute

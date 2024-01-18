@@ -28,7 +28,7 @@ public class BloomFilter {
         //boolean flag = mytest0705Filter.contains(key);
         //System.out.println(flag);
         mytest0705Filter.tryInit(10L, 0.09);
-        mytest0705Filter.expire(1L,TimeUnit.DAYS);
+        mytest0705Filter.expire(360L,TimeUnit.DAYS);
         mytest0705Filter.add(modKey);
 
         boolean flag1 = mytest0705Filter.contains(modKey);
