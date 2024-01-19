@@ -1,5 +1,7 @@
 package com.maviron.spring.springdemo.until;
 
+import com.alibaba.fastjson.JSONObject;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
@@ -93,7 +95,7 @@ public class SerializeUtil {
      * @return Map<byte[], byte[]>
      */
     public static Map<byte[], byte[]> serializehmso2mbb(final Map<String, Object> hash) {
-        Map<byte[], byte[]> result = new HashMap<byte[], byte[]>();
+        Map<byte[], byte[]> result = new HashMap<>();
         try {
             Set<String> keys = hash.keySet();
             if (keys != null && keys.size() > 0) {
@@ -123,5 +125,23 @@ public class SerializeUtil {
         } catch (Exception e) {
         }
         return result;
+    }
+    public static void main(String[] args) {
+        JSONObject json = new JSONObject();
+        String property = "value.app.oaid";
+        String value = "12312312";
+
+        String[] keys = property.split("\\.");
+        JSONObject temp = json;
+
+        for (int i = 0; i < keys.length - 1; i++) {
+            if (!temp.containsKey(keys[i])) {
+                temp.put(keys[i], new JSONObject());
+            }
+            temp = temp.getJSONObject(keys[i]);
+        }
+        temp.put(keys[keys.length - 1], value);
+
+        System.out.println(json.toString());
     }
 }
