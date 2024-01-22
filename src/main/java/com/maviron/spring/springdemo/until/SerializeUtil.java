@@ -126,22 +126,4 @@ public class SerializeUtil {
         }
         return result;
     }
-    public static void main(String[] args) {
-        JSONObject json = new JSONObject();
-        String property = "value.app.oaid";
-        String value = "12312312";
-
-        String[] keys = property.split("\\.");
-        JSONObject temp = json;
-
-        for (int i = 0; i < keys.length - 1; i++) {
-            if (!temp.containsKey(keys[i])) {
-                temp.put(keys[i], new JSONObject());
-            }
-            temp = temp.getJSONObject(keys[i]);
-        }
-        temp.put(keys[keys.length - 1], value);
-
-        System.out.println(json.toString());
-    }
 }
