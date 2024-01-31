@@ -1,6 +1,6 @@
 package com.maviron.spring.springdemo.serialize;
 
-import com.alliance.utils.SpringUtils;
+
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
@@ -46,7 +46,7 @@ public class NameMappingCache {
      */
     public static void putMediaMapping(){
         if (!isEmpty()){return;}
-        MappingSearchService dmpGrabPosParamMappingService = SpringUtils.getBean("dmpGrabPosParamMappingService");
+        MappingSearchService dmpGrabPosParamMappingService = null;
         Map<String, Map<String, String>> mapping = dmpGrabPosParamMappingService.queryMapping();
 
         synchronized (INSTANCE){

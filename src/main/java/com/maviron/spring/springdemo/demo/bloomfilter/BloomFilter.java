@@ -21,9 +21,9 @@ import java.util.concurrent.TimeUnit;
 public class BloomFilter {
     public static void main(String[] args) {
         RedissonClient redissonClient = getRedissonClient();
-        String modKey = "2023081714290375_baf0f58c-9f21-11ee-9617-14dda951cbfa";
+        String modKey = "6dd1c9672af921c8";
         long l = hashCodeMod(modKey);
-        RBloomFilter<Object> mytest0705Filter = redissonClient.getBloomFilter("orderNoFillFilter20231220"+"_"+l);
+        RBloomFilter<Object> mytest0705Filter = redissonClient.getBloomFilter("globalFilter20240130"+"_"+l);
         //boolean add = mytest0705Filter.add("");
         //boolean flag = mytest0705Filter.contains(key);
         //System.out.println(flag);
