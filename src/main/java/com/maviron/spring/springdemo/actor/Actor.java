@@ -4,6 +4,8 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
 /**
+ * java 实现actor模型
+ *
  * @author houlei
  * @version 1.0.0
  * @ClassName Actor.java
@@ -47,8 +49,10 @@ public abstract class Actor {
         });
         actorThread.start();
     }
-    public void act(Message message){
+
+    public void act(Message message) {
         mailbox.offer(message);
     }
+
     protected abstract void handleMessage(Message message);
 }
