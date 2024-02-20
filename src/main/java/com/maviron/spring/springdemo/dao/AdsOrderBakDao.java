@@ -1,21 +1,19 @@
 package com.maviron.spring.springdemo.dao;
-import com.maviron.spring.springdemo.entity.AdsBrand;
-import com.maviron.spring.springdemo.sublisttable.DateTableShardStrategy;
-import com.maviron.spring.springdemo.sublisttable.TableShard;
+
+import com.maviron.spring.springdemo.springstatemachine.entity.AdsOrderBak;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
 /**
- * (AdsBrand)表数据库访问层
+ * ads订单表(AdsOrderBak)表数据库访问层
  *
  * @author makejava
- * @since 2022-04-07 10:37:49
+ * @since 2024-02-19 15:44:46
  */
-@TableShard(tableName = {"ads_brand","user"}, shardStrategy = DateTableShardStrategy.class)
 // @Mapper
-public interface AdsBrandDao {
+public interface AdsOrderBakDao {
 
     /**
      * 通过ID查询单条数据
@@ -23,7 +21,7 @@ public interface AdsBrandDao {
      * @param id 主键
      * @return 实例对象
      */
-    AdsBrand queryById(Integer id);
+    AdsOrderBak queryById(@Param("id") Integer id);
 
     /**
      * 查询指定行数据
@@ -32,48 +30,48 @@ public interface AdsBrandDao {
      * @param limit  查询条数
      * @return 对象列表
      */
-    List<AdsBrand> queryAllByLimit(@Param("offset") int offset, @Param("limit") int limit);
+    List<AdsOrderBak> queryAllByLimit(@Param("offset") int offset, @Param("limit") int limit);
 
 
     /**
      * 通过实体作为筛选条件查询
      *
-     * @param adsBrand 实例对象
+     * @param adsOrderBak 实例对象
      * @return 对象列表
      */
-    List<AdsBrand> queryAll(AdsBrand adsBrand);
+    List<AdsOrderBak> queryAll(AdsOrderBak adsOrderBak);
 
     /**
      * 新增数据
      *
-     * @param adsBrand 实例对象
+     * @param adsOrderBak 实例对象
      * @return 影响行数
      */
-    int insert(AdsBrand adsBrand);
+    int insert(AdsOrderBak adsOrderBak);
 
     /**
      * 批量新增数据（MyBatis原生foreach方法）
      *
-     * @param entities List<AdsBrand> 实例对象列表
+     * @param entities List<AdsOrderBak> 实例对象列表
      * @return 影响行数
      */
-    int insertBatch(@Param("entities") List<AdsBrand> entities);
+    int insertBatch(@Param("entities") List<AdsOrderBak> entities);
 
     /**
      * 批量新增或按主键更新数据（MyBatis原生foreach方法）
      *
-     * @param entities List<AdsBrand> 实例对象列表
+     * @param entities List<AdsOrderBak> 实例对象列表
      * @return 影响行数
      */
-    int insertOrUpdateBatch(@Param("entities") List<AdsBrand> entities);
+    int insertOrUpdateBatch(@Param("entities") List<AdsOrderBak> entities);
 
     /**
      * 修改数据
      *
-     * @param adsBrand 实例对象
+     * @param adsOrderBak 实例对象
      * @return 影响行数
      */
-    int update(AdsBrand adsBrand);
+    int update(AdsOrderBak adsOrderBak);
 
     /**
      * 通过主键删除数据

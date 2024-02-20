@@ -44,6 +44,7 @@
    2、后一个方法可能需要用到前一个阶段的结果
    3、通过设置上下文，每执行一个方法将结果放到上下文中，下一个方法调用时会调取上下文的结果继续执行
    4、这个上下文在线程中是单例的
+25、序列化注解替换key com.maviron.spring.springdemo.serialize @JsonSerialize和BeanNameMappingSerializer
 25、版本的比较  com.maviron.spring.springdemo.demo.compareVersion
 26、actor模式  com.maviron.spring.springdemo.actor
 27、状态机的四大概念：状态、事件、动作和变换：https://mp.weixin.qq.com/s/n6QYCC4FD6PRafC2cruUXw
@@ -51,3 +52,13 @@
 29、Spring关闭后执行的方法:1、注册钩子方法Runtime.getRuntime().addShutdownHook 2、@PreDestroy 3、实现DisposableBean接口
 30、非HTTP或者HTTPS的deeplink校验  com.maviron.spring.springdemo.dpvalidater.DeeplinkValidator
 31、本地缓存使用compute进行加减 com.maviron.spring.springdemo.cachecompute
+32、根据json生成java bean maven 的坐标
+    <dependency>
+        <groupId>com.javaear</groupId>
+        <artifactId>json4bean</artifactId>
+        <version>0.2.0</version>
+    </dependency>
+33、yml文件是单一个mybatis的sqlSession  yml文件的配置只对当前sqlsession有效，如果在mybatis的config中重建工厂类，如果重新指定mapper文件或者路径或者其他设置，则会覆盖之前yml的文件配置
+34、
+
+

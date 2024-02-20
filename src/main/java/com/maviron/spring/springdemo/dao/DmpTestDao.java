@@ -25,8 +25,8 @@ public interface DmpTestDao {
      *
      * @return 影响行数
      */
-    @InsertProvider(type=SqlProviderAdapter.class, method="insert")
-    int insert(InsertStatementProvider<DmpTest> insertStatement);
+    // @InsertProvider(type=SqlProviderAdapter.class, method="insert")
+    // int insert(InsertStatementProvider<DmpTest> insertStatement);
 
     /**
      * 批量新增数据（MyBatis原生foreach方法）
@@ -44,14 +44,14 @@ public interface DmpTestDao {
      */
     int insertOrUpdateBatch(@Param("entities") List<DmpTest> entities);
 
-    default int insert(DmpTest dmpTest) {
-        return insert(SqlBuilder.insert(dmpTest)
-                .into(new EmployeeDynamicSqlSupport.DmpTestSqlTable())
-                .map(EmployeeDynamicSqlSupport.appName).toProperty("appName")
-                .map(EmployeeDynamicSqlSupport.packageName).toProperty("package")
-                .build()
-                .render(RenderingStrategy.MYBATIS3));
-    }
+    // default int insert(DmpTest dmpTest) {
+    //     return insert(SqlBuilder.insert(dmpTest)
+    //             .into(new EmployeeDynamicSqlSupport.DmpTestSqlTable())
+    //             .map(EmployeeDynamicSqlSupport.appName).toProperty("appName")
+    //             .map(EmployeeDynamicSqlSupport.packageName).toProperty("package")
+    //             .build()
+    //             .render(RenderingStrategy.MYBATIS3));
+    // }
 
 
 }

@@ -8,6 +8,7 @@ import org.springframework.data.redis.repository.configuration.EnableRedisReposi
 import org.springframework.http.converter.protobuf.ProtobufHttpMessageConverter;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.client.RestTemplate;
+import tk.mybatis.spring.annotation.MapperScan;
 
 import java.util.Collections;
 
@@ -15,6 +16,7 @@ import java.util.Collections;
 @EnableScheduling
 @EnableBatchProcessing
 @EnableRedisRepositories
+@MapperScan(basePackages = {"com.maviron.spring.springdemo.dao"})
 public class SpringDemoApplication {
 
     public static void main(String[] args) {

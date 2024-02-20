@@ -8,9 +8,9 @@
     </resultMap>
 
     <!--新增所有列-->
-    <insert id="insert">
-       ${insertStatement}
-    </insert>
+    <!--<insert id="insert">-->
+       <!--${insertStatement}-->
+    <!--</insert>-->
 
     <insert id="insertBatch" keyProperty="" useGeneratedKeys="true">
         insert into dmp_test(app_name, package_name)

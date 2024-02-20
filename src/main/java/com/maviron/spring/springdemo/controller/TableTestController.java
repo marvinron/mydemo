@@ -32,29 +32,6 @@ public class TableTestController {
 
     @RequestMapping("insert")
     public void insertDmpTest() {
-        SqlSession session = sqlSessionFactory.openSession(ExecutorType.BATCH);
-        try {
-            DmpTestDao mapper = session.getMapper(DmpTestDao.class);
-            List<DmpTest> records = new ArrayList<DmpTest>(){{
-                add(new DmpTest("sange","83级"));
-                add(new DmpTest("pangzi","80级"));
-                add(new DmpTest("jiaohuang","20"));
-            }
 
-            }; // not shown
-
-            BatchInsert<DmpTest> batchInsert = SqlBuilder.insert(records)
-                    .into(new EmployeeDynamicSqlSupport.DmpTestSqlTable())
-                    .map(EmployeeDynamicSqlSupport.appName).toProperty("appName")
-                    .map(EmployeeDynamicSqlSupport.packageName).toProperty("packageName")
-                    .build()
-                    .render(RenderingStrategy.MYBATIS3);
-
-            batchInsert.insertStatements().stream().forEach(mapper::insert);
-
-            session.commit();
-        } finally {
-            session.close();
-        }
     }
 }

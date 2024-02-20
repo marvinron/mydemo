@@ -26,7 +26,7 @@ public class DmpTestServiceImpl implements DmpTestService {
      */
     @Override
     public DmpTest insert(DmpTest dmpTest) {
-        this.dmpTestDao.insert(dmpTest);
+        // this.dmpTestDao.insert(dmpTest);
         return dmpTest;
     }
 }

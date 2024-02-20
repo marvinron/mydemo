@@ -17,7 +17,7 @@ public class SessionFactoryConfig implements TransactionManagementConfigurer {
 
     @Autowired
     private DataSource dataSource;
-    private String mapper = "classpath:mapper/*/*Dao.xml";   //xml扫描路径
+    private String mapper = "classpath:mapper/*Dao.xml";   //xml扫描路径
     @Bean
     public SqlSessionFactory sqlSessionFactory() throws Exception {
         final SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
