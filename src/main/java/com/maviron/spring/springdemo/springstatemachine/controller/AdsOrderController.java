@@ -5,11 +5,12 @@ import com.maviron.spring.springdemo.springstatemachine.service.OrderServiceImpl
 import lombok.SneakyThrows;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.net.URI;
-import java.net.URL;
+import java.util.Date;
 
 /**
  * @author houlei
@@ -31,11 +32,56 @@ public class AdsOrderController {
         return orderById;
     }
 
+    /**
+     * 创建订单
+     *
+     * @param orderBak
+     * @return
+     */
     @RequestMapping("/create")
-    public AdsOrderBak create(@RequestBody AdsOrderBak orderBak) {
+    public String create(@RequestBody AdsOrderBak orderBak) {
+        orderBak.setCreateTime(new Date());
+        orderBak.setUpdateTime(new Date());
         orderService.createOrder(orderBak);
-        return orderBak;
+        return "success";
     }
+
+    /**
+     * 对订单进行支付
+     *
+     * @param id
+     * @return
+     */
+    @RequestMapping("/pay")
+    public String pay(@RequestParam("id") Integer id) {
+        orderService.pay(id);
+        return "success";
+    }
+
+    /**
+     * 对订单进行发货
+     *
+     * @param id
+     * @return
+     */
+    @RequestMapping("/delivery")
+    public String delivery(@RequestParam("id") Integer id) {
+        orderService.deliver(id);
+        return "success";
+    }
+
+    /**
+     * 对订单进行确认收货
+     *
+     * @param id
+     * @return
+     */
+    @RequestMapping("/receive")
+    public String receive(@RequestParam("id") Integer id) {
+        orderService.receive(id);
+        return "success";
+    }
+
 
     @SneakyThrows
     public static void main(String[] args) {
