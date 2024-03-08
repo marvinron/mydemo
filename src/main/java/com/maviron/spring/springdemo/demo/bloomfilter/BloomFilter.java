@@ -21,15 +21,16 @@ import java.util.concurrent.TimeUnit;
 public class BloomFilter {
     public static void main(String[] args) {
         RedissonClient redissonClient = getRedissonClient();
-        String modKey = "6dd1c9672af921c8";
+        String modKey = "a36d948b-db5d-11ee-b1c7-14dda951cbfa";
+        // String modKey = "a36cd140-db5d-11ee-8547-14dda951cbfa";
         long l = hashCodeMod(modKey);
-        RBloomFilter<Object> mytest0705Filter = redissonClient.getBloomFilter("globalFilter20240130"+"_"+l);
+        RBloomFilter<Object> mytest0705Filter = redissonClient.getBloomFilter("inefficientFilter20240305"+"_"+l);
         //boolean add = mytest0705Filter.add("");
         //boolean flag = mytest0705Filter.contains(key);
         //System.out.println(flag);
-        mytest0705Filter.tryInit(10L, 0.09);
-        mytest0705Filter.expire(360L,TimeUnit.DAYS);
-        mytest0705Filter.add(modKey);
+        // mytest0705Filter.tryInit(10L, 0.09);
+        // mytest0705Filter.expire(3L,TimeUnit.DAYS);
+        // mytest0705Filter.add(modKey);
 
         boolean flag1 = mytest0705Filter.contains(modKey);
         System.out.println(flag1);
@@ -49,6 +50,19 @@ public class BloomFilter {
         redissonClient.shutdown();
 
     }
+    // public static void main(String[] args) throws Exception {
+    //     String redis_cluster_url_bloom = "bj-crs-6yxxz364.sql.tencentcdb.com";
+    //     String redis_cluster_port_bloom = "21327";
+    //     Config config = new Config();
+    //     config.useSingleServer().setAddress("redis://" + redis_cluster_url_bloom + ":" + redis_cluster_port_bloom);
+    //     config.useSingleServer().setPassword("Gameley668");
+    //     RedissonClient redissonClient = Redisson.create(config);
+    //     for (int i = 0; i < 12; i++) {
+    //         RBloomFilter<Object> bloomFilter = redissonClient.getBloomFilter("globalFilter20240305" + "_" + i);
+    //         System.out.println(bloomFilter.delete());
+    //         System.out.println(bloomFilter.tryInit(100000L, 0.05));
+    //     }
+    // }
 
     private static long hashCodeMod(String param) {
         long hashValue = HashUtil.mixHash(param);
@@ -67,13 +81,13 @@ public class BloomFilter {
         return Redisson.create(config);
     }
 
-    //private static RedissonClient getRedissonClient() {
+    // private static RedissonClient getRedissonClient() {
     //    String auth = "Gameley668";
-    //    String clusterUrl = "bj-crs-934sdw1s.sql.tencentcdb.com";
-    //    String clusterPort = "22022";
+    //    String clusterUrl = "bj-crs-6yxxz364.sql.tencentcdb.com";
+    //    String clusterPort = "21327";
     //    Config config = new Config();
     //    config.useSingleServer().setAddress("redis://" + clusterUrl + ":" + clusterPort);
     //    config.useSingleServer().setPassword(auth);
     //    return Redisson.create(config);
-    //}
+    // }
 }
