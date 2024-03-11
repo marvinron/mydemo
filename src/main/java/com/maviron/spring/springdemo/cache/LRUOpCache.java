@@ -4,7 +4,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * 优化后的可高并发以及线程安全的场景
+ * 优化后的可高并发以及线程安全的场景（可用于生产）
  *
  * @param <K>
  * @param <V>
