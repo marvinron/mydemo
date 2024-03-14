@@ -9,8 +9,12 @@ import com.googlecode.concurrentlinkedhashmap.ConcurrentLinkedHashMap;
  *   <version>1.4.2</version>
  * </dependency>
  * googlecode的LRU实现 线程安全 可以完全用于生产
+ * https://github.com/ben-manes/concurrentlinkedhashmap
+ * http://fortl.net/2016/Google%E7%9A%84ConcurrentLinkedHashMap%E5%92%8CGuava%E7%9A%84Cache/
+ * ConcurrentLinkedHashMap作者将ConcurrentLinkedHashMap包含进了Guava项目
+ * https://www.jianshu.com/p/ed057cb69577 扩展内存
  */
-public class LRUCacheExample {
+public class LRUCacheGoogleConcurrentLinkedHashMap {
 
     public static void main(String[] args) {
         // 创建一个LRU cache实例

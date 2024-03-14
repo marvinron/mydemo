@@ -21,16 +21,16 @@ import java.util.concurrent.TimeUnit;
 public class BloomFilter {
     public static void main(String[] args) {
         RedissonClient redissonClient = getRedissonClient();
-        String modKey = "a36d948b-db5d-11ee-b1c7-14dda951cbfa";
+        String modKey = "6dd1c9672af921c8001";
         // String modKey = "a36cd140-db5d-11ee-8547-14dda951cbfa";
         long l = hashCodeMod(modKey);
-        RBloomFilter<Object> mytest0705Filter = redissonClient.getBloomFilter("inefficientFilter20240305"+"_"+l);
+        RBloomFilter<Object> mytest0705Filter = redissonClient.getBloomFilter("inefficientFilter20240312"+"_"+l);
         //boolean add = mytest0705Filter.add("");
         //boolean flag = mytest0705Filter.contains(key);
         //System.out.println(flag);
-        // mytest0705Filter.tryInit(10L, 0.09);
-        // mytest0705Filter.expire(3L,TimeUnit.DAYS);
-        // mytest0705Filter.add(modKey);
+        mytest0705Filter.tryInit(10L, 0.09);
+        mytest0705Filter.expire(3L,TimeUnit.DAYS);
+        mytest0705Filter.add(modKey);
 
         boolean flag1 = mytest0705Filter.contains(modKey);
         System.out.println(flag1);
