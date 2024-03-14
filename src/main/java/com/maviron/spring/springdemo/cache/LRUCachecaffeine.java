@@ -1,15 +1,8 @@
 package com.maviron.spring.springdemo.cache;
 
-import com.github.benmanes.caffeine.cache.AsyncLoadingCache;
-import com.github.benmanes.caffeine.cache.Cache;
+import cn.hutool.core.date.StopWatch;
 import com.github.benmanes.caffeine.cache.Caffeine;
-import com.github.benmanes.caffeine.cache.LoadingCache;
 import lombok.extern.slf4j.Slf4j;
-import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
-
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.TimeUnit;
 
 /**
  * @author houlei
@@ -45,45 +38,71 @@ import java.util.concurrent.TimeUnit;
  */
 @Slf4j
 public class LRUCachecaffeine {
-    com.github.benmanes.caffeine.cache.LoadingCache<String, String> caffeineCache = Caffeine.newBuilder()
-            .maximumSize(5)
-            .expireAfterWrite(20, TimeUnit.SECONDS)
-            .refreshAfterWrite(10, TimeUnit.SECONDS)
-            .build(key -> {
-                log.info("加载数据");
-                // 加载时,睡眠一秒
-                Thread.sleep(5000);
-                return key + System.currentTimeMillis();
-            });
 
     public static void main(String[] args) throws Exception{
-        AsyncLoadingCache<String, String> loadingCache = Caffeine.newBuilder()
+        /*AsyncLoadingCache<String, String> loadingCache = Caffeine.newBuilder()
                 .maximumSize(2)
                 // .weigher()
-                .expireAfterWrite(1, TimeUnit.SECONDS)
+                .expireAfterWrite(1, TimeUnit.DAYS)
                 // .scheduler()
                 .refreshAfterWrite(1L, TimeUnit.SECONDS)
                 .buildAsync((key) -> {
                     System.out.println(Thread.currentThread().getName());
                     System.out.println("adssada========");
-                    return key + "";
+                    return key + " build";
                 });
         // loadingCache.put("nem", "1");
         // loadingCache.put("nam", "1");
         // loadingCache.put("ntm", "1");
-        loadingCache.put("12321",CompletableFuture.supplyAsync(()->"12321"));
-        loadingCache.put("12322",CompletableFuture.supplyAsync(()->"12321"));
-        loadingCache.put("12323",CompletableFuture.supplyAsync(()->"12321"));
-        loadingCache.put("12324",CompletableFuture.supplyAsync(()->"12321"));
-        loadingCache.put("12325",CompletableFuture.supplyAsync(()->"12321"));
+        // loadingCache.put("12321",CompletableFuture.supplyAsync(()->"12321"));
+        // loadingCache.put("12322",CompletableFuture.supplyAsync(()->"12321"));
+        // loadingCache.put("12323",CompletableFuture.supplyAsync(()->"12321"));
+        // loadingCache.put("12324",CompletableFuture.supplyAsync(()->"12321"));
+        // loadingCache.put("12325",CompletableFuture.supplyAsync(()->"12321"));
         // Thread.sleep(1000);
-        String name = Thread.currentThread().getName();
-        System.out.println(name);
-        CompletableFuture<String> nem = loadingCache.get("nem");
-        System.out.println(nem.get(1,TimeUnit.MILLISECONDS));
-        Thread.sleep(1000000);
-        String nem1 = loadingCache.get("nem").get();
-        System.out.println(nem1);
+        // String name = Thread.currentThread().getName();
+        // System.out.println(name);
+        // CompletableFuture<String> nem = loadingCache.get("nem");
+        // System.out.println(nem.get(1,TimeUnit.MILLISECONDS));
+        // Thread.sleep(1000000);
+        for (int i = 0; i < 10; i++) {
+            String nem1 = loadingCache.get("nem_"+i).get();
+            System.out.println(nem1);
+        }
+        loadingCache.get("nem_2");
+        System.out.println(loadingCache.asMap());*/
+        StopWatch stopWatch = new StopWatch();
+        stopWatch.start();
+        com.github.benmanes.caffeine.cache.LoadingCache<String, String> caffeineCache = Caffeine.newBuilder()
+                .maximumSize(2)
+                // .expireAfterWrite(20, TimeUnit.SECONDS)
+                // .refreshAfterWrite(1, TimeUnit.SECONDS)
+                .build(key -> {
+                    log.info("加载数据");
+                    // 加载时,睡眠一秒
+                    // Thread.sleep(5000);
+                    return key + System.currentTimeMillis();
+                });
+
+       /*AsyncLoadingCache<Object, String> caffeineCache = Caffeine.newBuilder()
+                .maximumSize(2)
+                .buildAsync((key) -> {
+                    log.info("加载数据");
+                    return String.valueOf(key + " build");
+                });
+        caffeineCache.put("dabai",CompletableFuture.supplyAsync(()->"12321"));
+        caffeineCache.put("xiaobai",CompletableFuture.supplyAsync(()->"12321"));
+        caffeineCache.put("xiaobai1",CompletableFuture.supplyAsync(()->"12321"));*/
+        caffeineCache.put("dabai","12312");
+        caffeineCache.put("dabai1","12312");
+        caffeineCache.put("dabai2","12312");
+        caffeineCache.get("nem_2");
+        caffeineCache.get("nem_2");
+        caffeineCache.get("nem_21");
+        caffeineCache.get("nem_21");
+        System.out.println(caffeineCache.asMap());
+        stopWatch.stop();
+        System.out.println(stopWatch.getTotalTimeMillis());
 
     }
 }
