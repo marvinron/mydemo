@@ -44,7 +44,7 @@
    2、后一个方法可能需要用到前一个阶段的结果
    3、通过设置上下文，每执行一个方法将结果放到上下文中，下一个方法调用时会调取上下文的结果继续执行
    4、这个上下文在线程中是单例的
-25、序列化注解替换key com.maviron.spring.springdemo.serialize @JsonSerialize和BeanNameMappingSerializer
+25、序列化注解查询的时候替换key com.maviron.spring.springdemo.serialize @JsonSerialize和BeanNameMappingSerializer
 25、版本的比较  com.maviron.spring.springdemo.demo.compareVersion
 26、actor模式  com.maviron.spring.springdemo.actor
 27、状态机的四大概念：状态、事件、动作和变换：https://mp.weixin.qq.com/s/n6QYCC4FD6PRafC2cruUXw
