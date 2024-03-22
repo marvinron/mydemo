@@ -1,14 +1,11 @@
 package com.maviron.spring.springdemo.demo.bloomfilter;
 
 import cn.hutool.core.util.HashUtil;
-import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
 import org.redisson.Redisson;
 import org.redisson.api.RBloomFilter;
 import org.redisson.api.RedissonClient;
 import org.redisson.config.Config;
 
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -21,10 +18,10 @@ import java.util.concurrent.TimeUnit;
 public class BloomFilter {
     public static void main(String[] args) {
         RedissonClient redissonClient = getRedissonClient();
-        String modKey = "6dd1c9672af921c8001";
+        String modKey = "6dd1c9672af921c8";
         // String modKey = "a36cd140-db5d-11ee-8547-14dda951cbfa";
         long l = hashCodeMod(modKey);
-        RBloomFilter<Object> mytest0705Filter = redissonClient.getBloomFilter("inefficientFilter20240312"+"_"+l);
+        RBloomFilter<Object> mytest0705Filter = redissonClient.getBloomFilter("globalfiltera20240318"+"_"+l);
         //boolean add = mytest0705Filter.add("");
         //boolean flag = mytest0705Filter.contains(key);
         //System.out.println(flag);

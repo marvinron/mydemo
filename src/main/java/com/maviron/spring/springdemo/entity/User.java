@@ -45,6 +45,13 @@ public class User implements Serializable {
     private UserVo userVo;
     private Double salery;
 
+    public User(String id, @NotNull(message = "姓名不能为空") @Size(min = 1, max = 20, message = "姓名长度必须在1-20之间") String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public User() {
+    }
 
     public Double getSalery() {
         return salery;
