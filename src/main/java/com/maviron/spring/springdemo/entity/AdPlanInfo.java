@@ -1,5 +1,8 @@
 package com.maviron.spring.springdemo.entity;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 public class AdPlanInfo {
     /**
      * 广告计划ID
@@ -38,7 +41,11 @@ public class AdPlanInfo {
         this.dailyBudget = dailyBudget;
     }
 
-
+    public static void main(String[] args) {
+        BigDecimal balance = new BigDecimal("3.44");
+        BigDecimal bigDecimal = balance.setScale(1, RoundingMode.HALF_UP);
+        System.out.println(bigDecimal.toString());
+    }
 
 
 }

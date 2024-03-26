@@ -100,6 +100,7 @@ public class LRUCachecaffeine {
         caffeineCache.get("nem_2");
         caffeineCache.get("nem_21");
         caffeineCache.get("nem_21");
+        caffeineCache.get("nem_21");
         System.out.println(caffeineCache.asMap());
         stopWatch.stop();
         System.out.println(stopWatch.getTotalTimeMillis());
