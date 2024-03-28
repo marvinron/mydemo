@@ -29,7 +29,7 @@
 //         //通过这个系统管理对象创建actor，并返回当前actor的地址，可以理解成现实生活中用户的一个邮箱地址
 //         //使用actorSystem.actorOf定义一个名为actorNormal的ActorRef
 //         ActorRef actor = actorSystem.actorOf(Props.create(ActorNormal.class), "actorNormal");
-//         //发送消息Object msg（发送消息的内容，任何类型的数据）, final ActorRef sender（表示没有发送者（其实是一个叫做deadLetters的Actor））
+//         //发送消息Object msg（发送消息的内容，任何类型的数据）, final ActorRef rightactorsender（表示没有发送者（其实是一个叫做deadLetters的Actor））
 //         actor.tell("kiba", ActorRef.noSender());
 //     }
 //     @GetMapping(value = "/Akka/AkkaSendInt")

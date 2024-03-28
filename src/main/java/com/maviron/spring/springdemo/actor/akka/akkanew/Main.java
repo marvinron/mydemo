@@ -35,7 +35,7 @@ public class Main {
                         System.out.println("Actor1 received request: " + msg);
                         ActorRef actor2 = getContext().actorOf(Props.create(Actor2.class));
                         actor2.tell("request to Actor2", self());
-                        // sender().tell("request to Actor2", self());
+                        // rightactorsender().tell("request to Actor2", self());
                     })
                     .build();
         }
@@ -60,7 +60,7 @@ public class Main {
             return receiveBuilder()
                     .match(String.class, msg -> {
                         System.out.println("Actor3 received request: " + msg);
-                        getSender().tell("final response", getSender());
+                        getContext().parent().tell("from actors response....", getSelf());
                     })
                     .build();
         }
