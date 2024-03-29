@@ -16,7 +16,7 @@ public class ActionHandler1 extends ActionHandler{
      * 执行
      */
     private void doAction1() {
-
+        System.out.println("action1 处理了");
     }
 
 

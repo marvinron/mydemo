@@ -34,6 +34,6 @@ public class ActionHandlerFactory {
     }
 
     public static void main(String[] args) {
-        ActionHandlerFactory.getInstance().doAction("action9");
+        ActionHandlerFactory.getInstance().doAction("action1");
     }
 }
