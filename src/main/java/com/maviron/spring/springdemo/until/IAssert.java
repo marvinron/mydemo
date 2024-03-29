@@ -6,6 +6,8 @@ import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.lang.NonNull;
 
+import java.lang.management.ManagementFactory;
+import java.lang.management.OperatingSystemMXBean;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Objects;
@@ -75,6 +77,12 @@ public final class IAssert {
 
     public static void justThrow(String msg) {
 
+    }
+
+    public static void main(String[] args) {
+        OperatingSystemMXBean osBean = ManagementFactory.getPlatformMXBean(OperatingSystemMXBean.class);
+        double systemLoadAverage = osBean.getSystemLoadAverage();
+        System.out.println(systemLoadAverage);
     }
 
 }

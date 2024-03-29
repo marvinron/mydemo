@@ -61,6 +61,8 @@
 33、yml文件是单一个mybatis的sqlSession  yml文件的配置只对当前sqlsession有效，如果在mybatis的config中重建工厂类，如果重新指定mapper文件或者路径或者其他设置，则会覆盖之前yml的文件配置
 34、synchronize   无锁->偏向锁->轻量级锁->重量级锁
 35、使用LRUCacheGuva 作为缓存或者使用caffeine cache作为缓存 com.maviron.spring.springdemo.cache
-36、使用akka进行异步非阻塞、高性能的事件驱动模型 com.maviron.spring.springdemo.actor.akka.akkanewtest
+36、使用akka进行异步非阻塞、高性能的事件驱动模型 com.maviron.spring.springdemo.actor.rightactorsender
+37、kong是一个openResty 应用程序，而OpenResty 运行在 Nginx 之上，使用 Lua 扩展了 Nginx。Kong = OpenResty + Nginx + Lua
+
 
 
