@@ -63,6 +63,6 @@
 35、使用LRUCacheGuva 作为缓存或者使用caffeine cache作为缓存 com.maviron.spring.springdemo.cache
 36、使用akka进行异步非阻塞、高性能的事件驱动模型 com.maviron.spring.springdemo.actor.rightactorsender
 37、kong是一个openResty 应用程序，而OpenResty 运行在 Nginx 之上，使用 Lua 扩展了 Nginx。Kong = OpenResty + Nginx + Lua
-
+38、去掉if的方法：1、提前return 2、使用枚举进行优化 3、Optional 判空 4、表驱动法 就是放入map中  5、策略模式+工厂方法  类放入Map中  6、责任链模式 7、Function 8、定义函数接口function
 
 
