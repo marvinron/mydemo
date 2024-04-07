@@ -15,8 +15,13 @@ import java.util.concurrent.Executors;
  */
 public class ThreadDemo4 {
     public static void main(String[] args) {
+
         // 1. 创建线程池
         ExecutorService executorService = Executors.newFixedThreadPool(4);
+        CompletableFuture.runAsync(()-> System.out.println("A"),executorService)
+                .thenRunAsync(()-> System.out.println("B"),executorService)
+                .thenRunAsync(()-> System.out.println("C"),executorService);
+
         List<Integer> list = Arrays.asList(1, 2, 3, 4);
         CompletableFuture[] completableFutures = list.stream().map(key ->
                 CompletableFuture.runAsync(() -> {
@@ -29,5 +34,6 @@ public class ThreadDemo4 {
                 }, executorService)).toArray(CompletableFuture[]::new);
         CompletableFuture.anyOf(completableFutures).join();
         executorService.shutdown();
+
     }
 }
