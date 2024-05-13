@@ -66,5 +66,6 @@
 38、去掉if的方法：1、提前return 2、使用枚举进行优化 3、Optional 判空 4、表驱动法 就是放入map中  5、策略模式+工厂方法  类放入Map中  6、责任链模式 7、Function 8、定义函数接口function
 39、使用虚拟线程的时候可以设置虚拟线程的运载线程参数 jdk.virtualThreadScheduler.parallelism以及jdk.virtualThreadScheduler.maxPoolSize
 40、利用transfer可以对广告进行异步化处理,但是只能一个请求一个请求的串行处理
+41、使用MurmurHashToBase62和RandomCodeGenerator生成随机数，有可能会重复，可以利用mysql或者布隆库判断是否存在
 
 

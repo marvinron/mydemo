@@ -109,7 +109,7 @@ class LRUOpCache<K, V> {
         cache.put(2, "One");
         cache.get(1);
         cache.put(3,"one");
-        System.out.println(cache);
+        System.out.println(cache.toString());
     }
 }
 

@@ -19,7 +19,7 @@ public class LRUCacheGoogleConcurrentLinkedHashMap {
     public static void main(String[] args) {
         // 创建一个LRU cache实例
         ConcurrentLinkedHashMap<String, String> lruCache = new ConcurrentLinkedHashMap.Builder<String, String>()
-                .maximumWeightedCapacity(3) // 设置最大容量为3
+                .maximumWeightedCapacity(3)// 设置最大容量为3
                 .build();
 
         // 向LRU cache中添加条目
