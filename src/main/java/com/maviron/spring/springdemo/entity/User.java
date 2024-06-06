@@ -11,7 +11,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 
 import javax.validation.constraints.*;
+import java.beans.BeanInfo;
+import java.beans.Introspector;
+import java.beans.PropertyDescriptor;
 import java.io.Serializable;
+import java.lang.reflect.Method;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
@@ -118,6 +122,26 @@ public class User implements Serializable {
                 ", email='" + email + '\'' +
                 ", sequence=" + sequence +
                 '}';
+    }
+    public static Object getProperty(Object obj, String propertyName) {
+        try {
+            // 获取Bean的信息
+            BeanInfo beanInfo = Introspector.getBeanInfo(obj.getClass());
+            // 获取所有属性的描述符
+            PropertyDescriptor[] propertyDescriptors = beanInfo.getPropertyDescriptors();
+
+            // 遍历属性的描述符，找到对应属性的Getter方法
+            for (PropertyDescriptor propertyDescriptor : propertyDescriptors) {
+                if (propertyDescriptor.getName().equals(propertyName)) {
+                    Method getterMethod = propertyDescriptor.getReadMethod();
+                    // 调用Getter方法获取属性值
+                    return getterMethod.invoke(obj);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public static void main(String[] args) {
