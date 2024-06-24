@@ -68,5 +68,5 @@
 40、利用transfer可以对广告进行异步化处理,但是只能一个请求一个请求的串行处理
 41、使用MurmurHashToBase62和RandomCodeGenerator生成随机数，有可能会重复，可以利用mysql或者布隆库判断是否存在
 42、从对象里面获取对应属性的值  可以使用Introspector  com.maviron.spring.springdemo.entity的getProperty方法；或者com.maviron.spring.springdemo.bean的BeanValueByProperties方法
-
+43、除了使用map对接口实现类使用注入外，可以使用ServiceLocatorFactoryBean对类进行构造注入，通过关键子获取对应的实现类
 
