@@ -26,7 +26,9 @@ public class TestBeanFactoryProxyController {
     public String getService() {
         String a = testBeanFactoryProxy.get("A").getBeanName();
         System.out.println(a);
-        return a;
+        String c = testBeanFactoryProxy.get("C").getBeanName();
+        System.out.println(c);
+        return c;
 
     }
 }
