@@ -9,8 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
  * @author houlei
  * @version 1.0.0
  * @ClassName TestController.java
- * @Description TODO
+ * @Description 测试servicelocaterbeanfactory
  * @createTime 2024年06月24日 14:50:00
+ * @see org.springframework.beans.factory.config.ServiceLocatorFactoryBean
  */
 @RestController
 @RequestMapping("test")
