@@ -54,8 +54,8 @@ public class CsvTest {
 
     public static void main(String[] args) throws Exception{
         RedissonClient redissonClient = getRedissonClient();
-        String key = "4ae57798ed5d49c0be2f9c1918485459_oaid_ad8a1ad6-13f2-4aff-af72-5f4f29749b28";
-        RBloomFilter<Object> blackDeviceBloomFilter = redissonClient.getBloomFilter("4ae57798ed5d49c0be2f9c1918485459_"+hashCodeMod(key,16));
+        String key = "15c5ed9b9b209a6096395d47e3271729";
+        RBloomFilter<Object> blackDeviceBloomFilter = redissonClient.getBloomFilter("3f15826952a94891bed064252fb55eb40001_"+hashCodeMod(key,16));
         blackDeviceBloomFilter.tryInit(100L, 0.05);
         blackDeviceBloomFilter.add(key);
         boolean contains = blackDeviceBloomFilter.contains(key);

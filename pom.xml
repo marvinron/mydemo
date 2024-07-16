@@ -284,6 +284,11 @@
             <artifactId>groovy</artifactId>
             <version>4.0.19</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
+            <version>3.2.0</version>
+        </dependency>
 
     </dependencies>
 

@@ -1,5 +1,6 @@
 package com.maviron.spring.springdemo.until;
 
+import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.crypto.digest.DigestUtil;
 import com.maviron.spring.springdemo.entity.User;
 import org.apache.commons.lang3.StringUtils;
@@ -93,7 +94,7 @@ public class ConversionUtils {
     }
 
     public static void main(String[] args) {
-        List<User> list = new ArrayList<>();
+        /*List<User> list = new ArrayList<>();
         User user = new User();
         user.setId("1");
         user.setName("qwe");
@@ -112,7 +113,18 @@ public class ConversionUtils {
         Map<String, Integer> collect = list.stream().collect(Collectors.toMap(User::getId, User::getAge, (v1, v2) -> v2));
         System.out.println(collect);
         long l = decodeTo61("12312asdasdasghhjkhjk-sdfsdfsdf");
-        System.out.println(l);
+        System.out.println(l);*/
+
+        User user = new User();
+        user.setId("1");
+        user.setName("qwe");
+        user.setAge(12);
+
+        User user1 = new User();
+        user1.setId("1");
+        user1.setName("ioow");
+        user1.setAge(15);
+        // BeanUtil.copyProperties(source,target);
 
     }
 
