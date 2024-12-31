@@ -6,6 +6,9 @@ import com.github.pagehelper.PageInfo;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * 生产上使用过的
+ */
 public class PageHelperUtil {
 
     public static <T> PageInfo<T> listToPage(List<T> arrayList, Integer pageNum, Integer pageSize) {
