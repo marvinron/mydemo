@@ -19,6 +19,7 @@ import java.lang.reflect.Method;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author houlei
@@ -166,7 +167,7 @@ public class User implements Serializable {
             //account.setPass("PFUOFODCGSVXRMQL");
             //account.setSslEnable(true);
             //MailUtil.send(account, "houlei801@163.com", "大数据发送的信息", "value", false);
-            List<User> list = new ArrayList<>();
+            /*List<User> list = new ArrayList<>();
             User user = new User();
             user.setName("adasdas");
             user.setEmail("asdsa@163");
@@ -190,7 +191,10 @@ public class User implements Serializable {
             //String host = uri.getHost();
             //System.out.println(host);
             String scheme = uri.getScheme();
-            System.out.println(scheme);
+            System.out.println(scheme);*/
+            User user = new User();
+            String s = Optional.ofNullable(user.getName()).orElse("1111");
+            System.out.println("======="+s);
         } catch (Exception e) {
             log.error("user参数异常！", e.getMessage(),e);
 
